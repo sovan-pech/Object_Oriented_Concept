@@ -1,22 +1,21 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main(String[] args) {
-    MembershipPlan gold = new MembershipPlan("gold" , 250.0f, "A1");
-    MembershipPlan silver = new MembershipPlan("silver" , 150.0f, "B2");
-    MembershipPlan basic = new MembershipPlan("basic", 60.0f, "C1");
-    MembershipPlan[] plan = {gold, silver , basic};
-    Members[] customer = new Members[2];
+    Gender male = Gender.Male;
+    Gender female= Gender.Female;
+    MemberStatus active= MemberStatus.ACTIVE;
+    MemberStatus suspend = MemberStatus.SUSPEND;
+    MembershipPlan basic = new MembershipPlan("Basic",30.0f, 3);
     Scanner input = new Scanner(System.in);
-    for( int i = 0 ; i<2; i++){
-        customer[i] = new Members( "Yuth", basic);
-        System.out.printf("===========================Customer %d ==========================\n",i);
-        customer[i].inputData(input, plan);
-        System.out.println("========================== END =================================");
+    Members[] members=new Members[2];
+    for( int i=0 ; i<2;i++){
+        members[i]= new Members("Yuth",19,male,"098765432",active,basic);
+
     }
-    Members.header();
-    for( var i : customer){
-        System.out.println(i.showAccess());
+    for( var mem:members){
+        System.out.printf("============================================\n");
+        mem.viewInfo();
+        System.out.printf("=============================================\n");
     }
-    System.out.println();
     input.close();
 }

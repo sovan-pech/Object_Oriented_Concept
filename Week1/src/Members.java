@@ -1,49 +1,63 @@
 import java.util.Date;
 import java.util.Scanner;
+import java.util.UUID;
 
-public class Members {
-    private String name;
-    private MembershipPlan myplan;
+public class Members extends Person {
+    private MembershipPlan plan;
     private String ID;
-    private int age;
-    private String gender;
-    private Date dob; // date of birth
-    public Members(String name , MembershipPlan plan){
-        this.name = name;
-        this.myplan = plan;
+    private MemberStatus status;
+    public Members(String name,int age, Gender gender, String phoneNumber, MemberStatus status,
+                   MembershipPlan plan ){
+        super(name,gender,age,phoneNumber); //assign value to super class ( person )
+        this.ID="MM-"+UUID.randomUUID().toString().substring(0,3);
+        this.plan=plan;
+        this.status=status;
     }
-    public static void header(){
-        System.out.printf("%.20s %.20s %.20s %.20s %.20s %.20s %.20s\n","ID","Customer Name","Customer Age","Customer Gender","Plan ID", "Plan Name","Plan Price");
-    }
-    /*
-    @return a formatted well organized out data
-     */
-    public String showAccess(){
-        return "C%.20s %.20s %.20s %.20s %.20s".formatted(ID,name,age,gender,myplan.getDetail());
-    }
-    /*
-     *@param Membership[] available plan is to get the array of plan and easier to input value than using String
-    *@example instead of user input "gold" "Gold"... we would use number instead 0:plan A, 1:plan B, 2:plan c
-    */
-    public  void inputData(Scanner input, MembershipPlan[] availablePlan ){
-        System.out.print("Enter member name : ");
-        name = input.nextLine();
-        System.out.print("Enter your Age    :"); age=input.nextInt();
-        input.nextLine();
-        System.out.print("Enter your Gender :");gender=input.nextLine();
+    @Override
+    void viewInfo() {
+        System.out.printf
+                ("""
+                        ID              :%s
+                        Name            :%s
+                        Age             :%s
+                        Gender          :%s
+                        Phone Number    :%s
+                        Membership Plan :%s
+                        Status          :%s
+                        %n""", ID,super.name,super.age,super.gender,super.phoneNumber,plan.getName(),status);
 
-        System.out.println("Choose plan.");
-        System.out.println("Here is the available plan : ");
-        for( int i = 0 ; i < availablePlan.length; i++){
-            System.out.printf("%d : %s\n",i,availablePlan[i].getName());
-        }
-        System.out.println("Choose plan from 0 to "+(availablePlan.length-1)+".");
-        int choice = input.nextInt();
-        while(choice <0 || choice>=availablePlan.length){
-            System.out.println("INVALID INPUT! Try again");
-            choice=input.nextInt();
-        }
-        input.nextLine();
-        myplan=availablePlan[choice];
+    }
+
+    @Override
+    void inputData() {
+
+    }
+    //accessor
+    //setter
+    protected void setName(String name){
+        super.name= name;
+    }
+    protected void  setGender(Gender gender){
+        super.gender=gender;
+    }
+    protected void setAge(int age){
+        super.age=age;
+    }
+    protected void setPlan( MembershipPlan plan){
+        this.plan=plan;
+    }
+    protected void setStatus(MemberStatus status){
+        this.status=status;
+    }
+    //getter
+
+    protected String getName(){
+        return super.name;
+    }
+    protected MembershipPlan getPlan(){
+        return plan;
+    }
+    protected MemberStatus getStatus(){
+        return status;
     }
 }
