@@ -1,3 +1,8 @@
+package Gym.Service;
+
+import Gym.Entities.Members;
+import Gym.Entities.MembershipPlan;
+
 import java.util.ArrayList;
 
 public class MemberService {

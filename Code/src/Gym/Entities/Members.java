@@ -1,4 +1,9 @@
-import java.util.Date;
+package Gym.Entities;
+
+import Gym.Enum.Gender;
+import Gym.Enum.MemberStatus;
+import Gym.Base.Person;
+
 import java.util.Scanner;
 import java.util.UUID;
 
@@ -6,7 +11,8 @@ public class Members extends Person {
     private MembershipPlan plan;
     private String ID;
     private MemberStatus status;
-    public Members(String name,int age, Gender gender, String phoneNumber, MemberStatus status,
+
+    public Members(String name, int age, Gender gender, String phoneNumber, MemberStatus status,
                    MembershipPlan plan ){
         super(name,gender,age,phoneNumber); //assign value to super class ( person )
         this.ID="MM-"+UUID.randomUUID().toString().substring(0,3);
@@ -14,7 +20,7 @@ public class Members extends Person {
         this.status=status;
     }
     @Override
-    void viewInfo() {
+    protected void viewInfo() {
         System.out.printf
                 ("""
                         ID              :%s
@@ -28,9 +34,22 @@ public class Members extends Person {
 
     }
 
-    @Override
-    void inputData() {
-
+    void inputData(Scanner input, MembershipPlan []plans) {
+        int iPlan=-1;
+        System.out.print("Enter Name                :"); super.name=input.nextLine();
+        System.out.print("Enter Age                 :"); super.age=input.nextInt();
+        input.nextLine();
+        System.out.print("Enter Phone Number        :"); super.phoneNumber=input.nextLine();
+        System.out.println("Available plan.");
+        for(int i = 0 ; i < plans.length; i++){
+            System.out.printf("%d. %s\n",i+1,plans[i].getName());
+        }
+        System.out.println("Pick your prefer Plan. From 0 to "+plans.length);
+        while((iPlan=input.nextInt()) <1 || iPlan>plans.length ){
+            System.out.println("Invalid input");
+        }
+        input.nextLine();
+        plan=plans[iPlan-1];
     }
     //accessor
     //setter

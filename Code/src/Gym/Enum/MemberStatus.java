@@ -1,3 +1,5 @@
+package Gym.Enum;
+
 public enum MemberStatus {
     ACTIVE(true)
     ,SUSPEND(false);

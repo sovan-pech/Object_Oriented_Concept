@@ -1,3 +1,7 @@
+package Gym.Base;
+
+import Gym.Enum.Gender;
+
 public abstract class Person {
     protected String name;
     protected Gender gender;
@@ -9,6 +13,6 @@ public abstract class Person {
         this.phoneNumber=phoneNumber;
         this.age=age;
     }
-    abstract void viewInfo();
-    abstract void inputData();
+    protected abstract void viewInfo();
+
 }

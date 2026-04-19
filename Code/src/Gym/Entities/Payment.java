@@ -1,3 +1,7 @@
+package Gym.Entities;
+
+import Gym.Enum.PaymentMethod;
+
 public class Payment {
     private double payAmount; // base amount
     private String paymentID; //
@@ -27,10 +31,10 @@ public class Payment {
 
     public double  calFinalAmounth(double payAmount, PaymentMethod method){
         switch (method){
-            case KHQR -> {
+            case PaymentMethod.KHQR -> {
                 return payAmount;
             }
-            case ByCash -> {
+            case PaymentMethod.ByCash -> {
                 return payAmount;
             }
         }

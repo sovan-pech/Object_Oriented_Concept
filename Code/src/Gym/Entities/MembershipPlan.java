@@ -1,4 +1,5 @@
-import java.util.Date;
+package Gym.Entities;
+
 import java.util.UUID;
 
 public class MembershipPlan {
