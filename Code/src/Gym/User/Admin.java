@@ -50,6 +50,7 @@ public class Admin extends Staff {
         );
     }
     private void addStaff(){
+        System.out.println("------------Menu-----------");
     }
     private  void updateStaff(){
     }
