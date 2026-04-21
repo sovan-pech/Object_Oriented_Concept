@@ -20,17 +20,15 @@ public class MembershipPlan {
         if(planPrice > 0 ){
             this.planPrice=planPrice;
         }
-        else{
-
-            this.planPrice=0.0f;
-        }
     }
-    private void setPlanName( String planName){
+    public void setPlanName( String planName){
         this.planName= planName;
     }
-    private void setDuration( int duration){
+    public void setDuration( int duration){
         this.duration=duration;
     }
+
+
     public  String getName(){
         return planName;
     }

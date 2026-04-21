@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Admin extends Staff {
-    private ArrayList<Staff> staffList = new ArrayList<>();
     private String ID;
-
     // constructor
     public Admin(String name, int age, Gender gender, String phoneNumber, String role, Double salary) {
         super(name, age, gender, phoneNumber, role, salary);
@@ -15,11 +13,14 @@ public class Admin extends Staff {
     }
     // accessor
     private void setStaffName(String name){
-
-        super.setName(name);
+        super.name=name;
     }
-    private void setStaffSalary(Double salary){
-        super.setSalary(salary);
+
+    protected void setName(String name){
+        super.name=name;
+    }
+    protected  void setRole( String role ){
+        super.setRole(role);
     }
 
 

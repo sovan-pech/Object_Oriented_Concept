@@ -5,34 +5,30 @@ import Gym.Base.Person;
 
 import java.util.UUID;
 
-public class Staff extends Person { // be able to manage members add and delete , manage plan,
-    private String  ID;
+public class Staff extends Person {
+    private final String  ID;
     private String role;
     private Double salary;
     //constructor
     public Staff(String name, int age, Gender gender, String phoneNumber, String role, Double salary){
         super(name, gender, age, phoneNumber);
         this.ID="ST-"+ UUID.randomUUID().toString().substring(0,3);
-        this.role= role;
-        this.salary=salary;
-
+        this.setRole(role);
+        this.setSalary(salary);
     }
     // accessor
-    //setter
-    protected void setName(String name){
-        super.name=name;
+    protected void setRole(String role) {
+        if (role != null && !role.isEmpty())
+            this.role = role;
     }
-    protected  void setSalary( Double salary){
-        if(salary > 0){
-            this.salary=salary;
-        }
-        else{
-            this.salary=0.0;
-        }
+
+    protected void setSalary(Double salary) {
+        if (salary > 0)
+            this.salary = salary;
+        else
+            this.salary = 0.0;
     }
-    protected  void setRole( String role ){
-        this.role=role;
-    }
+
     //getter
     public  String getRole() {
         return this.role;

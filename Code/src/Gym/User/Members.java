@@ -15,7 +15,7 @@ public class Members extends Person {
     //constructor
     public Members(String name, int age, Gender gender, String phoneNumber, MemberStatus status,
                    MembershipPlan plan ){
-        super(name,gender,age,phoneNumber); //assign value to super class ( person )
+        super(n,gender,age,phoneNumber);
         this.ID="MM-"+UUID.randomUUID().toString().substring(0,3);
         this.plan=plan;
         this.status=status;
@@ -29,14 +29,17 @@ public class Members extends Person {
         super.gender=gender;
     }
     protected void setAge(int age){
-        super.age=age;
+        if (age>0)
+            super.age=age;
+        else
+            super.age=18;
     }
     public void setPlan(int n, MembershipPlan[] plan){
-        if(n<plan.length || n>0 ){
+        if(n<plan.length && n>=0 ){
             this.plan=plan[n];
         }
         else{
-            System.err.println("INVALID INPUT!");
+            this.plan=plan[0];
         }
     }
     public void setStatus(MemberStatus status){
