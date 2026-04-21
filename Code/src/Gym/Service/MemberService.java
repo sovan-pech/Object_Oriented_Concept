@@ -1,6 +1,6 @@
 package Gym.Service;
 
-import Gym.Entities.Members;
+import Gym.User.Members;
 import Gym.Entities.MembershipPlan;
 
 import java.util.ArrayList;

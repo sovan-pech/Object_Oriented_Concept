@@ -1,6 +1,7 @@
 package Gym.Entities;
 
 import Gym.Enum.PaymentMethod;
+import Gym.User.Members;
 
 public class Payment {
     private double payAmount; // base amount
@@ -17,17 +18,32 @@ public class Payment {
         this.method=method;
     }
     // accessor
-    // discount
     public void setDiscount(float discount){
-        this.discount=discount;
+        if(discount>0)
+            this.discount=discount;
+        else{
+            System.err.println("INVALID INPUT");
+        }
     }
     public float getDiscount(){
         return discount;
     }
-    // Pay amount
     public void setPayAmount(double payAmount){
-        this.payAmount= payAmount;
+        if(payAmount>0){
+            this.payAmount=payAmount;
+        }
+        else{
+            System.err.println("INVALID INPUT");
+        }
     }
+    public String getPaymentID()    { return paymentID; }
+    public Members getMembers()     { return members; }
+    public PaymentMethod getMethod(){ return method; }
+    public double getPayAmount()    { return payAmount; }
+
+
+
+
 
     public double  calFinalAmounth(double payAmount, PaymentMethod method){
         switch (method){
@@ -36,6 +52,10 @@ public class Payment {
             }
             case PaymentMethod.ByCash -> {
                 return payAmount;
+            }
+            case PaymentMethod.CreditCard ->
+            {
+                return payAmount+payAmount*0.05;
             }
         }
         return payAmount;

@@ -1,6 +1,9 @@
+import Gym.Entities.Payment;
 import Gym.Enum.Gender;
 import Gym.Enum.MemberStatus;
-import Gym.Entities.Members;
+import Gym.Enum.PaymentMethod;
+import Gym.User.Admin;
+import Gym.User.Members;
 import Gym.Entities.MembershipPlan;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -15,15 +18,20 @@ void main(String[] args) {
     MembershipPlan gold = new MembershipPlan("Gold",30.0f, 3);
     MembershipPlan []plans= {basic,silver,gold};
     Scanner input = new Scanner(System.in);
-    Members[] members=new Members[2];
-    for( int i=0 ; i<2;i++){
-        members[i]= new Members("Yuth",19,male,"098765432",active,basic);
-        members[i].inputData(input,plans);
-    }
-    for( var mem:members){
-        System.out.printf("============================================\n");
-        mem.viewInfo();
-        System.out.printf("=============================================\n");
-    }
+    Members yuth = new Members("Yuth", 19,Gender.Male,"098765432", active , basic );
+//    Members[] members=new Members[2];
+//    for( int i=0 ; i<2;i++){
+//        members[i]= new Members("Yuth",19,male,"098765432",active,basic);
+//        members[i].inputData(input,plans);
+//    }
+//    for( var mem:members){
+//        System.out.printf("============================================\n");
+//        mem.viewInfo();
+//        System.out.printf("=============================================\n");
+//    }
+    Payment payment=new Payment(60.0, yuth, 0.0f, PaymentMethod.KHQR);
+    System.out.println(payment.getMembers());
+
+
     input.close();
 }

@@ -14,8 +14,22 @@ public class MembershipPlan {
         this.planPrice =planPrice;
         this.duration = duration;
     }
-    public String getDetail(){
-        return "%.20s %.20s %.20s".formatted(plan_ID,planName, planPrice);
+    // accessor
+
+    public void setPlanPrice(Double planPrice){
+        if(planPrice > 0 ){
+            this.planPrice=planPrice;
+        }
+        else{
+
+            this.planPrice=0.0f;
+        }
+    }
+    private void setPlanName( String planName){
+        this.planName= planName;
+    }
+    private void setDuration( int duration){
+        this.duration=duration;
     }
     public  String getName(){
         return planName;
