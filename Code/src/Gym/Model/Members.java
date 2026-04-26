@@ -9,13 +9,13 @@ import java.util.UUID;
 
 public class Members extends Person {
     private MembershipPlan plan;
-    private String ID;
+    private  int count=0;
     private MemberStatus status;
 
     //constructor
     public Members(String name, Gender gender, int age, String phoneNumber, MemberStatus status, MembershipPlan plan ){
         super(name,age,gender,phoneNumber);
-        this.ID="MM-"+UUID.randomUUID().toString().substring(0,3);
+        super.ID="MM-"+(++count);
         this.plan=plan;
         this.status=status;
     }
@@ -29,6 +29,9 @@ public class Members extends Person {
         else{
             this.plan=plan[0];
         }
+    }
+    public   void setName(String name){
+        super.setName(name);
     }
     public void setStatus(MemberStatus status){
         this.status=status;
@@ -67,6 +70,9 @@ public class Members extends Person {
         input.nextLine();
         plan=plans[iPlan-1];
     }
+    public  static void hellow(){
+        System.out.println("Hellow");
+    };
 
     @Override
     public String toString() {
@@ -87,6 +93,8 @@ public class Members extends Person {
 
         );
     }
+
+
 }
 
 

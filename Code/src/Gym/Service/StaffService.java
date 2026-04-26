@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class StaffService {
     private ArrayList<Staff> staffList = new ArrayList<>();
-    public static Staff createStaff(Scanner input){
+    public static Staff  createStaff(Scanner input){
         System.out.println("==============Create Staff=============");
         System.out.print("Enter Name                  :"); String name= input.nextLine();
         System.out.print("Enter Age                   :"); int age = input.nextInt();
@@ -19,8 +19,7 @@ public class StaffService {
             genderType=Gender.valueOf(gender);
         }
         catch (IllegalArgumentException e){
-            System.out.println(("Invalid input. Default gender set to MALE"));
-            genderType = Gender.MALE;
+           throw new IllegalArgumentException("Invalid input.");
         }
         System.out.print("\n");
         System.out.print("Enter Phone Number          :"); String phoneNum= input.nextLine();
@@ -31,6 +30,7 @@ public class StaffService {
     }
     public void addStaff(Staff newStaff){
         staffList.add(newStaff);
+        System.out.println("Staff added successful");
     }
 
 

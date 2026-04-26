@@ -14,7 +14,7 @@ public class Payment {
     private double finalAmount;
 
     public Payment( Members members, float discount , PaymentMethod method){
-        this.paymentID="PM-"+count++;
+        this.paymentID="PM-"+(++count);
         this.plan=members.getPlan();
         this.members = members;
         this.payAmount=members.getPlan().getPlanPrice();
@@ -39,7 +39,6 @@ public class Payment {
     public PaymentMethod getMethod(){ return method; }
     public double getPayAmount()    { return payAmount; }
 
-
     public double calFinalAmount() {
         return switch (method) {
             case KHQR -> payAmount * (1 - discount);
@@ -48,5 +47,16 @@ public class Payment {
         };
     }
 
-
+    @Override
+    public String toString() {
+        return """
+                Payment ID       :%s
+                Member Name      :%s
+                Discount         :%s
+                Membership Plan  :%s
+                Payment Method   :%s
+                Payment          :%s
+                """.formatted(this.paymentID,members.getID(),this.discount,plan.getName()
+                                ,method.name(),this.finalAmount);
+    }
 }

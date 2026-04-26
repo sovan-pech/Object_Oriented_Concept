@@ -7,10 +7,10 @@ public class Admin extends Staff {
     // constructor
     public Admin(String name, int age, Gender gender, String phoneNumber, String role, Double salary) {
         super(name, age, gender, phoneNumber, role, salary);
-        super.ID = "AD-"+ (10+(++count));
+        super.ID = "AD-"+(++count);
     }
     // accessor
-    public String getID(){ return  ID;}
+    public String getID(){ return ID;}
     @Override
     public String toString() {
         return  String.format(

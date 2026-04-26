@@ -5,13 +5,12 @@ import Gym.Base.Person;
 
 public class Staff extends Person {
     private  static  int count =0;
-    protected  String  ID;
     private String role;
     private Double salary;
     //constructor
     public Staff(String name, int age, Gender gender, String phoneNumber, String role, Double salary){
         super(name, age, gender, phoneNumber);
-        this.ID="ST-"+ count++;
+        super.ID="ST"+(++count);
         this.setRole(role);
         this.setSalary(salary);
     }
@@ -22,7 +21,7 @@ public class Staff extends Person {
     public Double getSalary(){
         return this.salary;
     }
-    public String getStaffID(){ return  this.ID;}
+    public String getID(){ return ID;}
 
     protected void setRole(String role) {
         if (role == null || role.isBlank()){
@@ -36,6 +35,7 @@ public class Staff extends Person {
         else
             this.salary = 0.0;
     }
+
     @Override
     public String toString() {
         return String.format("""
