@@ -1,7 +1,7 @@
 package Gym.Enum;
 
 public enum PaymentMethod {
-    ByCash,
-    CreditCard,
+    BYCASH,
+    CREDITCARD,
     KHQR
 }

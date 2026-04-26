@@ -1,42 +1,41 @@
-package Gym.User;
+package Gym.Model;
 
 import Gym.Enum.Gender;
 import Gym.Base.Person;
 
-import java.util.UUID;
-
 public class Staff extends Person {
-    private final String  ID;
+    private  static  int count =0;
+    protected  String  ID;
     private String role;
     private Double salary;
     //constructor
     public Staff(String name, int age, Gender gender, String phoneNumber, String role, Double salary){
-        super(name, gender, age, phoneNumber);
-        this.ID="ST-"+ UUID.randomUUID().toString().substring(0,3);
+        super(name, age, gender, phoneNumber);
+        this.ID="ST-"+ count++;
         this.setRole(role);
         this.setSalary(salary);
     }
     // accessor
-    protected void setRole(String role) {
-        if (role != null && !role.isEmpty())
-            this.role = role;
-    }
-
-    protected void setSalary(Double salary) {
-        if (salary > 0)
-            this.salary = salary;
-        else
-            this.salary = 0.0;
-    }
-
-    //getter
     public  String getRole() {
         return this.role;
     }
     public Double getSalary(){
         return this.salary;
     }
+    public String getStaffID(){ return  this.ID;}
 
+    protected void setRole(String role) {
+        if (role == null || role.isBlank()){
+            throw new IllegalArgumentException("Role cannot be empty");
+        }
+            this.role = role;
+    }
+    protected void setSalary(Double salary) {
+        if (salary > 0)
+            this.salary = salary;
+        else
+            this.salary = 0.0;
+    }
     @Override
     public String toString() {
         return String.format("""
@@ -59,11 +58,4 @@ public class Staff extends Person {
                 this.role,
                 this.salary);
     }
-    public void updateMembers(){
-
-    }
-
-
-
-
 }

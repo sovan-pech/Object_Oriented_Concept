@@ -1,7 +1,6 @@
 package Gym.Base;
 
 import Gym.Enum.Gender;
-import Gym.User.Staff;
 
 public abstract class Person {
     protected String name;
@@ -9,23 +8,18 @@ public abstract class Person {
     protected int age;
     protected String phoneNumber;
     private int count=1;
-    static int ID=1;
+    private  String ID;
 
     //constructor
-    public Person(String name, Gender gender, int age, String phoneNumber){
-        this.ID = count++;
+    public Person(String name, int age, Gender gender, String phoneNumber){
+        this.ID = "P-"+count++;
         this.setName(name);
-        this.gender=gender;
+        this.setGender(gender);
+    //getter
         this.phoneNumber=phoneNumber;
-        this.age=age;
+        this.setAge(age);
     }
     //setter
-    private void setName(String name){
-        if(name!=null && !name.isBlank()){
-            this.name=name;
-        }
-    }
-    //getter
 
     public String getName()       { return name; }
     public int getAge()           { return age; }

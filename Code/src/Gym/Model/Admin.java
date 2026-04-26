@@ -1,30 +1,16 @@
-package Gym.User;
+package Gym.Model;
 
 import Gym.Enum.Gender;
-import java.util.ArrayList;
-import java.util.UUID;
 
 public class Admin extends Staff {
-    private String ID;
+    private static int count=0;
     // constructor
     public Admin(String name, int age, Gender gender, String phoneNumber, String role, Double salary) {
         super(name, age, gender, phoneNumber, role, salary);
-        this.ID = "AD-"+ UUID.randomUUID().toString().substring(0,3);
+        super.ID = "AD-"+ (10+(++count));
     }
     // accessor
-    private void setStaffName(String name){
-        super.name=name;
-    }
-
-    protected void setName(String name){
-        super.name=name;
-    }
-    protected  void setRole( String role ){
-        super.setRole(role);
-    }
-
-
-
+    public String getID(){ return  ID;}
     @Override
     public String toString() {
         return  String.format(
@@ -42,18 +28,13 @@ public class Admin extends Staff {
                         ----------------------------------
                         """,
                 this.ID,
-                getName(),      // Using getters is safer than super.name
+                getName(),
                 getAge(),
                 getGender(),
                 getPhoneNumber(),
                 super.getRole(),
                 super.getSalary()
         );
-    }
-    private void addStaff(){
-        System.out.println("------------Menu-----------");
-    }
-    private  void updateStaff(){
     }
 }
 

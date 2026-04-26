@@ -1,4 +1,4 @@
-package Gym.User;
+package Gym.Model;
 
 import Gym.Entities.MembershipPlan;
 import Gym.Enum.Gender;
@@ -13,27 +13,15 @@ public class Members extends Person {
     private MemberStatus status;
 
     //constructor
-    public Members(String name, int age, Gender gender, String phoneNumber, MemberStatus status,
-                   MembershipPlan plan ){
-        super(n,gender,age,phoneNumber);
+    public Members(String name, Gender gender, int age, String phoneNumber, MemberStatus status, MembershipPlan plan ){
+        super(name,age,gender,phoneNumber);
         this.ID="MM-"+UUID.randomUUID().toString().substring(0,3);
         this.plan=plan;
         this.status=status;
     }
     //accessor
     //setter
-    protected void setName(String name){
-        super.name= name;
-    }
-    protected void  setGender(Gender gender){
-        super.gender=gender;
-    }
-    protected void setAge(int age){
-        if (age>0)
-            super.age=age;
-        else
-            super.age=18;
-    }
+
     public void setPlan(int n, MembershipPlan[] plan){
         if(n<plan.length && n>=0 ){
             this.plan=plan[n];

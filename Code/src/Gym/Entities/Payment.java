@@ -1,11 +1,10 @@
 package Gym.Entities;
 
 import Gym.Enum.PaymentMethod;
-import Gym.User.Members;
-
-import java.util.UUID;
+import Gym.Model.Members;
 
 public class Payment {
+    private  static int count=0;
     private double payAmount; // base amount
     private String paymentID; //
     private float discount; // if there's a discount
@@ -15,13 +14,12 @@ public class Payment {
     private double finalAmount;
 
     public Payment( Members members, float discount , PaymentMethod method){
-        this.paymentID="PM-"+ UUID.randomUUID().toString().substring(0,3);
+        this.paymentID="PM-"+count++;
         this.plan=members.getPlan();
         this.members = members;
         this.payAmount=members.getPlan().getPlanPrice();
-        this.finalAmount=calFinalAmount();
-
         this.discount=discount;
+        this.finalAmount=calFinalAmount();
         this.method=method;
     }
     // accessor
@@ -42,14 +40,11 @@ public class Payment {
     public double getPayAmount()    { return payAmount; }
 
 
-
-
-
     public double calFinalAmount() {
         return switch (method) {
             case KHQR -> payAmount * (1 - discount);
-            case ByCash -> payAmount * (1 - discount);
-            case CreditCard -> payAmount * (1 - discount) * 1.05;
+            case BYCASH -> payAmount * (1 - discount);
+            case CREDITCARD -> payAmount * (1 - discount) * 1.05;
         };
     }
 
