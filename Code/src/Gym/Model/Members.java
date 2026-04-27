@@ -5,18 +5,18 @@ import Gym.Enum.Gender;
 import Gym.Enum.MemberStatus;
 import Gym.Base.Person;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class Members extends Person {
     private MembershipPlan plan;
-    private String ID;
+    private  static  int count=0;
+    private    String ID;
     private MemberStatus status;
 
     // constructor
     public Members(String name, Gender gender, int age, String phoneNumber,
             MemberStatus status, MembershipPlan plan) {
         super(name, age, gender, phoneNumber);
-        this.ID = "MM-" + UUID.randomUUID().toString().substring(0, 8);
+        super.ID="Mem"+(++count);
         this.plan = plan;
         this.status = status;
     }
@@ -63,44 +63,9 @@ public class Members extends Person {
         return status;
     }
 
-    // helper input method
-    public void inputData(Scanner input, MembershipPlan[] plans) {
-        int iPlan = -1;
-
-        System.out.print("Enter Name                : ");
-        super.name = input.nextLine();
-
-        System.out.print("Enter Age                 : ");
-        super.age = input.nextInt();
-        input.nextLine();
-
-        System.out.print("Enter Gender (MALE/FEMALE): ");
-        super.gender = Gender.valueOf(input.nextLine().toUpperCase());
-
-        System.out.print("Enter Phone Number        : ");
-        super.phoneNumber = input.nextLine();
-
-        System.out.print("Enter Status (ACTIVE/INACTIVE): ");
-        this.status = MemberStatus.valueOf(input.nextLine().toUpperCase());
-
-        System.out.println("\nAvailable plans:");
-        for (int i = 0; i < plans.length; i++) {
-            System.out.printf("%d. %s\n", i + 1, plans[i].getName());
-        }
-
-        System.out.println("Pick your preferred plan (1 to " + plans.length + "):");
-
-        while ((iPlan = input.nextInt()) < 1 || iPlan > plans.length) {
-            System.out.println("Invalid input. Try again:");
-        }
-
-        input.nextLine();
-        this.plan = plans[iPlan - 1];
-    }
-
+        String planName = (plan == null) ? "None" : plan.getName();
     @Override
     public String toString() {
-        String planName = (plan == null) ? "None" : plan.getName();
 
         return String.format("""
                 ----------------------------------

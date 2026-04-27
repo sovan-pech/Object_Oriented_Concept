@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class StaffService {
     private ArrayList<Staff> staffList = new ArrayList<>();
-    public static Staff  createStaff(Scanner input){
+    public  Staff  createStaff(Scanner input){
         System.out.println("==============Create Staff=============");
         System.out.print("Enter Name                  :"); String name= input.nextLine();
         System.out.print("Enter Age                   :"); int age = input.nextInt();
@@ -31,6 +31,16 @@ public class StaffService {
     public void addStaff(Staff newStaff){
         staffList.add(newStaff);
         System.out.println("Staff added successful");
+    }
+    //lisst all staff
+    public void listAll() {
+        if (staffList.isEmpty()) {
+            System.out.println("No staff found.");
+            return;
+        }
+        System.out.println("====== ALL STAFF ======");
+        for (Staff s : staffList)
+            System.out.println(s);
     }
 
 

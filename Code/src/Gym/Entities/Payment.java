@@ -9,18 +9,17 @@ public class Payment {
     private String paymentID; //
     private float discount; // if there's a discount
     private Members members; // who paid ?
-    private MembershipPlan plan; // what plan do they purchase
+
     private PaymentMethod method; // in what method ? KHQR ? credit card?
     private double finalAmount;
 
     public Payment( Members members, float discount , PaymentMethod method){
         this.paymentID="PM-"+(++count);
-        this.plan=members.getPlan();
         this.members = members;
         this.payAmount=members.getPlan().getPlanPrice();
         this.discount=discount;
-        this.finalAmount=calFinalAmount();
         this.method=method;
+        this.finalAmount=calFinalAmount();
     }
     // accessor
     public void setDiscount(float discount){
@@ -46,7 +45,6 @@ public class Payment {
             case CREDITCARD -> payAmount * (1 - discount) * 1.05;
         };
     }
-
     @Override
     public String toString() {
         return """
@@ -56,7 +54,7 @@ public class Payment {
                 Membership Plan  :%s
                 Payment Method   :%s
                 Payment          :%s
-                """.formatted(this.paymentID,members.getID(),this.discount,plan.getName()
+                """.formatted(this.paymentID,members.getID(),this.discount,members.getPlan().getName()
                                 ,method.name(),this.finalAmount);
     }
 }

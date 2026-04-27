@@ -44,8 +44,7 @@ public abstract class Person {
         }
         this.phoneNumber=phoneNumber;
     }
-
-
+    //Getter
     public String getName()       { return name; }
     public int getAge()           { return age; }
     public Gender getGender()     { return gender; }

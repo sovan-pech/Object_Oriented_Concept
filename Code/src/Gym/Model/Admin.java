@@ -3,7 +3,7 @@ package Gym.Model;
 import Gym.Enum.Gender;
 
 public class Admin extends Staff {
-    private static int count=0;
+    private static int count=0;//2
     // constructor
     public Admin(String name, int age, Gender gender, String phoneNumber, String role, Double salary) {
         super(name, age, gender, phoneNumber, role, salary);

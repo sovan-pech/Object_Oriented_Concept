@@ -11,9 +11,18 @@ public class PaymentService {
     private ArrayList<Payment> paymentList = new ArrayList<>();
     public Payment processPayment(Members member, float discount, PaymentMethod paymentMethod ){
         Payment payment = new Payment(member,discount,paymentMethod);
-        paymentList.add(payment);
         System.out.println("Payment processed: "+payment.getPaymentID());
         paymentList.add(payment);
         return payment;
     }
+    public void listAll() {
+        if (paymentList.isEmpty()) {
+            System.out.println("No payments found.");
+            return;
+        }
+        System.out.println("====== ALL PAYMENTS ======");
+        for (Payment p : paymentList)
+            System.out.println(p);
+    }
+
 }

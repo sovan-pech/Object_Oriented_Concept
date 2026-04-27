@@ -35,7 +35,12 @@ public class Staff extends Person {
         else
             this.salary = 0.0;
     }
-
+    public void setName(String name){
+        super.setName(name);
+    }
+    public void setGender(Gender gender){
+        super.setGender(gender);
+    }
     @Override
     public String toString() {
         return String.format("""
