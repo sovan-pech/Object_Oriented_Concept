@@ -17,14 +17,14 @@ void main(String[] args) {
     Gender male = Gender.MALE;
     Gender female= Gender.FEMALE;
     Gender[] type = {male,female};
+    Scanner input = new Scanner(System.in);
+//    Members yuth = new Members("Yuth", Gender.MALE,19,"098765432", active , silver );
 //    MemberStatus active= MemberStatus.ACTIVE;
 //    MemberStatus suspend = MemberStatus.SUSPEND;
 //    MembershipPlan basic = new MembershipPlan("Basic",30.0f, 3);
 //    MembershipPlan silver = new MembershipPlan("Silver",60.0f, 3);
 //    MembershipPlan gold = new MembershipPlan("Gold",90.0f, 3);
 //    MembershipPlan []plans= {basic,silver,gold};
-//    Scanner input = new Scanner(System.in);
-//    Members yuth = new Members("Yuth", Gender.MALE,19,"098765432", active , silver );
 
 //    Members[] members=new Members[2];
 //    for( int i=0 ; i<2;i++){
@@ -69,6 +69,19 @@ void main(String[] args) {
 //    PaymentService paymentService = new PaymentService();
 //    System.out.println(paymentService.processPayment(yuth,0, PaymentMethod.KHQR));
 //
-//    input.close();
-    new GymManagement().run();
+    MembershipPlan basic = new MembershipPlan("Basic", 29.99, 1);
+    MembershipPlan premium = new MembershipPlan("Premium", 59.99, 3);
+    ArrayList<MembershipPlan> plans = new ArrayList<>();
+    plans.add(basic);
+    plans.add(premium);
+    for(MembershipPlan m : plans){
+        System.out.println(m);
+    }
+    System.out.println("Our gym name");
+    System.out.println(GymManagement.gymName);
+    new GymManagement().run(); // run menu to create and viewall
+
+
+    input.close();
+
 }

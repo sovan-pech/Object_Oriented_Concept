@@ -1,7 +1,6 @@
 package Gym.Entities;
 
 import java.util.UUID;
-
 public class MembershipPlan {
     private  static int count =0;
     private  String planName;
@@ -39,4 +38,19 @@ public class MembershipPlan {
         return planPrice;
     }
     public int getDuration(){ return  duration;}
+
+    //to output
+    @Override
+    public String toString() {
+        return String.format("""
+            ----------------------------------
+                    MEMBERSHIP PLAN
+            ----------------------------------
+            ID              : %s
+            Plan Name       : %s
+            Price           : $%.2f
+            Duration        : %d month(s)
+            ----------------------------------
+            """, getPlan_ID(),getName(), getPlanPrice(),getDuration());
+    }
 }
