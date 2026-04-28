@@ -25,36 +25,16 @@ public class Membership {
 
   // Getters and Setters
 
-  public void setMembershipId(String membershipId) {
-    this.membershipId = membershipId;
-  }
-
-  public Member getMember() {
-    return member;
-  }
-
-  public void setMember(Member member) {
-    this.member = member;
+  public Member getMemberName() {
+    return MemberName;
   }
 
   public MembershipPlan getPlan() {
     return plan;
   }
 
-  public void setPlan(MembershipPlan plan) {
-    this.plan = plan;
-  }
-
   public String getStartDate() {
     return startDate;
-  }
-
-  public void setStartDate(String startDate) {
-    this.startDate = startDate;
-  }
-
-  public String getEndDate() {
-    return endDate;
   }
 
   public void setEndDate(String endDate) {
@@ -69,14 +49,29 @@ public class Membership {
     this.status = status;
   }
 
-  // Display method
-  public void displayMembershipInfo() {
-    System.out.println("Membership ID: " + membershipId);
-    System.out.println("Member: " + member);
-    System.out.println("Plan: " + plan);
-    System.out.println("Start Date: " + startDate);
-    System.out.println("End Date: " + endDate);
-    System.out.println("Status: " + status);
+  @Override
+  public String toString() {
+    return String.format(
+        """
+            ----------------------------------
+                    Admin INFORMATION
+            ----------------------------------
+            ID              : %s
+            Name            : %s
+            Age             : %d
+            Gender          : %s
+            Phone Number    : %s
+            Role            : %s
+            Salary          : $%.2f
+            ----------------------------------
+            """,
+        this.ID,
+        getName(),
+        getAge(),
+        getGender(),
+        getPhoneNumber(),
+        super.getRole(),
+        super.getSalary());
   }
 
 }
