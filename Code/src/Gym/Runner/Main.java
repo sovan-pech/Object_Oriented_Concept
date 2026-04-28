@@ -69,17 +69,18 @@ void main(String[] args) {
 //    PaymentService paymentService = new PaymentService();
 //    System.out.println(paymentService.processPayment(yuth,0, PaymentMethod.KHQR));
 //
-    MembershipPlan basic = new MembershipPlan("Basic", 29.99, 1);
-    MembershipPlan premium = new MembershipPlan("Premium", 59.99, 3);
-    ArrayList<MembershipPlan> plans = new ArrayList<>();
-    plans.add(basic);
-    plans.add(premium);
-    for(MembershipPlan m : plans){
-        System.out.println(m);
-    }
-    System.out.println("Our gym name");
-    System.out.println(GymManagement.gymName);
-    new GymManagement().run(); // run menu to create and viewall
+//    MembershipPlan basic = new MembershipPlan("Basic", 29.99, 1);
+//    MembershipPlan premium = new MembershipPlan("Premium", 59.99, 3);
+//    ArrayList<MembershipPlan> plans = new ArrayList<>();
+//    plans.add(basic);
+//    plans.add(premium);
+//    for(MembershipPlan m : plans){
+//        System.out.println(m);
+//    }
+//    System.out.println("Our gym name");
+//    System.out.println(GymManagement.gymName);
+//    new GymManagement().run(); // run menu to create and viewall
+    System.out.println("Hello, from sombo laptop ");
 
 
     input.close();
