@@ -7,34 +7,24 @@ import Gym.Base.Person;
 import java.util.Scanner;
 
 public class Members extends Person {
-    private MembershipPlan plan;
-    private  static  int count=0;
-    private    String ID;
-    private MemberStatus status;
+
+    private static int count = 0;
+    private String ID;
 
     // constructor
-    public Members(String name, Gender gender, int age, String phoneNumber,
-            MemberStatus status, MembershipPlan plan) {
+    public Members(String name, Gender gender, int age, String phoneNumber) {
         super(name, age, gender, phoneNumber);
-        super.ID="Mem"+(++count);
-        this.plan = plan;
-        this.status = status;
+        super.ID = "Mem" + (++count);
+
     }
 
     // setter
-    public void setPlan(int n, MembershipPlan[] plans) {
-        if (n >= 0 && n < plans.length) {
-            this.plan = plans[n];
-        } else {
-            this.plan = plans[0];
-        }
-    }
 
     public void setName(String name) {
         super.setName(name);
     }
 
-    public void setAge(int age) { 
+    public void setAge(int age) {
         super.setAge(age);
     }
 
@@ -46,24 +36,11 @@ public class Members extends Person {
         super.setPhoneNumber(phoneNumber);
     }
 
-    public void setStatus(MemberStatus status) {
-        this.status = status;
-    }
-
     // getter
     public String getID() {
         return this.ID;
     }
 
-    public MembershipPlan getPlan() {
-        return plan;
-    }
-
-    public MemberStatus getStatus() {
-        return status;
-    }
-
-        String planName = (plan == null) ? "None" : plan.getName();
     @Override
     public String toString() {
 
@@ -83,8 +60,6 @@ public class Members extends Person {
                 super.getName(),
                 super.getAge(),
                 super.getGender(),
-                super.getPhoneNumber(),
-                planName,
-                status);
+                super.getPhoneNumber());
     }
 }
