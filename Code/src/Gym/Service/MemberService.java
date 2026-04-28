@@ -54,7 +54,7 @@ public class MemberService {
         input.nextLine();
         MembershipPlan selectedPlan=plans[iPlan-1];
 
-        return new Members(name,genderType,age,phoneNumber,memStatus, selectedPlan );
+        return new Members(name,genderType,age,phoneNumber);
     }
     //add member func
     public void addMember(Members member){

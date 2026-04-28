@@ -1,77 +1,59 @@
 package Gym.Entities;
-
-import java.lang.reflect.Member;
+import java.time.LocalDate;
 
 import Gym.Enum.MemberStatus;
+import Gym.Model.Members;
+
 
 public class Membership {
-
+  private static int count=0;
   private String membershipId;
-  private Member member;
-  private MembershipPlan plan;
-  private String startDate;
-  private String endDate;
+  private String memID;
+  private LocalDate startDate;
+  private LocalDate endDate;
   private MemberStatus status;
-
+  private MembershipPlan plan;
   // constructor
-  public Membership(Member member, MembershipPlan plan, String startDate, String endDate, MemberStatus status) {
-    this.membershipId = membershipId;
-    this.member = member;
-    this.plan = plan;
-    this.startDate = startDate;
-    this.endDate = endDate;
-    this.status = status;
+  public Membership(Members member, MembershipPlan plan) {
+    this.membershipId ="SUB-"+(++count);
+    // this.member = member;
+    this.memID = member.getID();
+    this.plan=plan;
+    this.startDate = LocalDate.now();
+    this.endDate = LocalDate.now().plusMonths(plan.getDuration());
+    this.status = MemberStatus.ACTIVE;
   }
 
   // Getters and Setters
 
-  public Member getMemberName() {
-    return MemberName;
-  }
-
-  public MembershipPlan getPlan() {
-    return plan;
-  }
-
-  public String getStartDate() {
+ 
+  public String getSubID(){ return this.membershipId;}
+  public LocalDate getStartDate() {
     return startDate;
   }
-
-  public void setEndDate(String endDate) {
-    this.endDate = endDate;
+  public MembershipPlan getPlan(){
+    return plan;
   }
-
   public MemberStatus getStatus() {
     return status;
   }
-
-  public void setStatus(MemberStatus status) {
-    this.status = status;
+  public LocalDate getEnDate(){
+    return endDate;
   }
-
-  @Override
-  public String toString() {
-    return String.format(
-        """
+ @Override
+public String toString() {
+    return String.format("""
             ----------------------------------
-                    Admin INFORMATION
+                    MEMBERSHIP INFO
             ----------------------------------
-            ID              : %s
-            Name            : %s
-            Age             : %d
-            Gender          : %s
-            Phone Number    : %s
-            Role            : %s
-            Salary          : $%.2f
+            Membership ID   : %s
+            Member ID       : %s
+            Plan ID         : %s
+            Start Date      : %s
+            End Date        : %s
+            Status          : %s
             ----------------------------------
-            """,
-        this.ID,
-        getName(),
-        getAge(),
-        getGender(),
-        getPhoneNumber(),
-        super.getRole(),
-        super.getSalary());
-  }
+            """, membershipId, memID, plan.getPlan_ID(),startDate, endDate, status);
+}
 
 }

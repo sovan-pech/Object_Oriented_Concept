@@ -1,5 +1,7 @@
 package Gym.Entities;
 
+import java.time.LocalDate;
+
 import Gym.Enum.PaymentMethod;
 import Gym.Model.Members;
 
@@ -8,17 +10,18 @@ public class Payment {
     private double payAmount; // base amount
     private String paymentID; //
     private float discount; // if there's a discount
-    private Members members; // who paid ?
-
+    private String subID;
+    private LocalDate paymentDate;
     private PaymentMethod method; // in what method ? KHQR ? credit card?
     private double finalAmount;
 
-    public Payment( Members members, float discount , PaymentMethod method){
+    public Payment( Membership memShip, float discount , PaymentMethod method){
         this.paymentID="PM-"+(++count);
-        this.members = members;
-        this.payAmount=members.getPlan().getPlanPrice();
+        this.subID= memShip.getSubID();
         this.discount=discount;
         this.method=method;
+        this.paymentDate=LocalDate.now();
+        this.payAmount=memShip.getPlan().getPlanPrice();
         this.finalAmount=calFinalAmount();
     }
     // accessor
@@ -33,8 +36,10 @@ public class Payment {
         return discount;
     }
 
+    public LocalDate getPaymentDate(){
+        return this.paymentDate;
+    }
     public String getPaymentID()    { return paymentID; }
-    public Members getMembers()     { return members; }
     public PaymentMethod getMethod(){ return method; }
     public double getPayAmount()    { return payAmount; }
 
@@ -46,15 +51,13 @@ public class Payment {
         };
     }
     @Override
-    public String toString() {
-        return """
-                Payment ID       :%s
-                Member Name      :%s
-                Discount         :%s
-                Membership Plan  :%s
-                Payment Method   :%s
-                Payment          :%s
-                """.formatted(this.paymentID,members.getID(),this.discount,members.getPlan().getName()
-                                ,method.name(),this.finalAmount);
-    }
+public String toString() {
+    return """
+            Payment ID      : %s
+            Subscription ID : %s
+            Discount        : %.0f%%
+            Method          : %s
+            Final Amount    : $%.2f
+            """.formatted(paymentID, subID, discount * 100, method.name(), finalAmount);
+}
 }

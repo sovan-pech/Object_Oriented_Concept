@@ -1,14 +1,14 @@
 package Gym.Runner;
 
+import Gym.Entities.Membership;
 import Gym.Enum.PaymentMethod;
 import Gym.Model.Members;
 import Gym.Model.Staff;
-import Gym.Service.AdminService;
 import Gym.Service.MemberService;
+import Gym.Service.MembershipService;
 import Gym.Service.PaymentService;
 import Gym.Service.StaffService;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GymManagement {
@@ -16,6 +16,7 @@ public class GymManagement {
     private MemberService memberService = new MemberService();
     private StaffService staffService = new StaffService();
     private PaymentService paymentService= new PaymentService();
+    private MembershipService membershipService = new MembershipService();
     Scanner input = new Scanner(System.in);
     public void run(){
         int choice=-1;
@@ -72,12 +73,13 @@ public class GymManagement {
                 0. Back
                 ==========================""");
             System.out.print("Enter choice: ");
-            choice = Integer.parseInt(input.nextLine());
+            choice = input.nextInt(); input.nextLine();
 
             switch (choice) {
                 case 1 -> {
                     System.out.print("Enter Member ID: ");
-                    Members m = memberService.findByID(input.nextLine());
+                    // Members m = memberService.findByID(input.nextLine());
+                    Membership m = membershipService.findByID(input.nextLine());
                     if (m == null) {
                         System.out.println("Member not found.");
                         break; }

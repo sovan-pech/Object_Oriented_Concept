@@ -10,16 +10,12 @@ public class Members extends Person {
 
     private static int count = 0;
     private String ID;
-
     // constructor
     public Members(String name, Gender gender, int age, String phoneNumber) {
         super(name, age, gender, phoneNumber);
         super.ID = "Mem" + (++count);
-
     }
-
     // setter
-
     public void setName(String name) {
         super.setName(name);
     }

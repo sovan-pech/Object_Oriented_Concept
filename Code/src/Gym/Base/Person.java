@@ -49,7 +49,9 @@ public abstract class Person {
     public int getAge()           { return age; }
     public Gender getGender()     { return gender; }
     public String getPhoneNumber(){ return phoneNumber; }
-
+    public String getID(){
+        return this.ID;
+    }
     @Override
     public String toString() {
         return String.format(

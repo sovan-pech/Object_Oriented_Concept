@@ -1,23 +1,25 @@
-import Gym.Base.Person;
-import Gym.Enum.Gender;
-import Gym.Enum.MemberStatus;
-import Gym.Enum.PaymentMethod;
-import Gym.Runner.GymManagement;
-import Gym.Service.AdminService;
-import Gym.Service.PaymentService;
-import Gym.Service.StaffService;
-import Gym.Model.Admin;
-import Gym.Model.Members;
-import Gym.Entities.MembershipPlan;
-import Gym.Model.Staff;
+package Gym.Runner;
+import java.util.Scanner;
+
+// import Gym.Base.Person;
+// import Gym.Enum.Gender;
+// import Gym.Enum.MemberStatus;
+// import Gym.Enum.PaymentMethod;
+// import Gym.Service.PaymentService;
+// import Gym.Service.StaffService;
+// import Gym.Model.Members;
+// import Gym.Entities.MembershipPlan;
+// import Gym.Model.Staff;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main(String[] args) {
-    Gender male = Gender.MALE;
-    Gender female= Gender.FEMALE;
-    Gender[] type = {male,female};
-    Scanner input = new Scanner(System.in);
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        new GymManagement().run();
+        input.close();
+    }
+}
 //    Members yuth = new Members("Yuth", Gender.MALE,19,"098765432", active , silver );
 //    MemberStatus active= MemberStatus.ACTIVE;
 //    MemberStatus suspend = MemberStatus.SUSPEND;
@@ -80,9 +82,3 @@ void main(String[] args) {
 //    System.out.println("Our gym name");
 //    System.out.println(GymManagement.gymName);
 //    new GymManagement().run(); // run menu to create and viewall
-    System.out.println("Hello, from sombo laptop ");
-
-
-    input.close();
-
-}
