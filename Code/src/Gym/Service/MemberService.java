@@ -16,7 +16,7 @@ public class MemberService {
             new MembershipPlan("Annual", 59.99, 12)
     };
 
-    public Members createMemer(Scanner input){
+    public Members createMember(Scanner input){
         System.out.print("Enter Name                : ");
         String name = input.nextLine().trim();     //
         System.out.print("Enter Age                 : ");
@@ -33,26 +33,7 @@ public class MemberService {
         System.out.print("Enter Phone Number        : ");
         String phoneNumber = input.nextLine().trim();
 
-        System.out.print("Enter Status (ACTIVE/INACTIVE): ");String status=input.nextLine().toUpperCase();
-        MemberStatus memStatus;
-        try{
-            memStatus=MemberStatus.valueOf(status);
-        }catch (IllegalArgumentException e){
-            throw new IllegalArgumentException("Invalid input.");
-        };
-        int iPlan=-1;
-        System.out.println("\nAvailable plans:");
-        for (int i = 0; i < plans.length; i++) {
-            System.out.printf("%d. %s\n", i + 1, plans[i].getName());
-        }
 
-        System.out.println("Pick your preferred plan (1 to " + plans.length + "):");
-
-        while ((iPlan = input.nextInt()) < 1 || iPlan > plans.length) {
-            System.out.println("Invalid input. Try again:");
-        }
-        input.nextLine();
-        MembershipPlan selectedPlan=plans[iPlan-1];
 
         return new Members(name,genderType,age,phoneNumber);
     }

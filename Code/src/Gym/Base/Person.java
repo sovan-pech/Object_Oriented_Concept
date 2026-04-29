@@ -7,12 +7,12 @@ public abstract class Person {
     protected Gender gender;
     protected int age;
     protected String phoneNumber;
-    private int count=1;
+    private static int count=0;
     protected  String ID;
 
     //constructor
     public Person(String name, int age, Gender gender, String phoneNumber){
-        this.ID = "P-"+count++;
+        this.ID = "P-"+(++count);
         this.setName(name);
         this.setGender(gender);
         this.setPhoneNumber(phoneNumber);

@@ -52,7 +52,7 @@ public class GymManagement {
             choice =input.nextInt(); input.nextLine();
             switch (choice) {
                 case 1 -> {
-                    Members m = memberService.createMemer(input);
+                    Members m = memberService.createMember(input);
                     memberService.addMember(m);
                 }
                 case 2 -> {

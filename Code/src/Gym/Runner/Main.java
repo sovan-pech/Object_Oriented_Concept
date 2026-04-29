@@ -1,4 +1,9 @@
 package Gym.Runner;
+import Gym.Entities.Membership;
+import Gym.Entities.MembershipPlan;
+import Gym.Enum.Gender;
+import Gym.Model.Members;
+
 import java.util.Scanner;
 
 // import Gym.Base.Person;
@@ -16,16 +21,20 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        new GymManagement().run();
+        MembershipPlan basic = new MembershipPlan("Basic",30.0f, 3);
+        MembershipPlan silver = new MembershipPlan("Silver",60.0f, 3);
+        MembershipPlan gold = new MembershipPlan("Gold",90.0f, 3);
+//        new GymManagement().run();
+        Members members = new Members("yuth", Gender.MALE, 19,"0987654321");
+        Membership membership = new Membership(members,basic);
+        System.out.println();
         input.close();
+
     }
 }
 //    Members yuth = new Members("Yuth", Gender.MALE,19,"098765432", active , silver );
 //    MemberStatus active= MemberStatus.ACTIVE;
 //    MemberStatus suspend = MemberStatus.SUSPEND;
-//    MembershipPlan basic = new MembershipPlan("Basic",30.0f, 3);
-//    MembershipPlan silver = new MembershipPlan("Silver",60.0f, 3);
-//    MembershipPlan gold = new MembershipPlan("Gold",90.0f, 3);
 //    MembershipPlan []plans= {basic,silver,gold};
 
 //    Members[] members=new Members[2];

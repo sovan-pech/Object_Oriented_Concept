@@ -17,8 +17,9 @@ public class MembershipService {
 
     public Membership findByID(String ID){
         for( Membership ms: membershipList){
-            if(ms.getSubID().equals(ID));
-            return ms;
+            if(ms.getSubID().equals(ID)) {
+                return ms;
+            }
         }
         return null;
     }
