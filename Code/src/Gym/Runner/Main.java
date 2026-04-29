@@ -1,8 +1,12 @@
-package Gym.Runner;
 import Gym.Entities.Membership;
 import Gym.Entities.MembershipPlan;
+import Gym.Entities.Payment;
 import Gym.Enum.Gender;
+import Gym.Enum.PaymentMethod;
 import Gym.Model.Members;
+import Gym.Service.MemberService;
+import Gym.Service.MembershipService;
+import Gym.Service.PaymentService;
 
 import java.util.Scanner;
 
@@ -17,21 +21,32 @@ import java.util.Scanner;
 // import Gym.Model.Staff;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
+// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutte
+void main(String[] args) {
         Scanner input = new Scanner(System.in);
-        MembershipPlan basic = new MembershipPlan("Basic",30.0f, 3);
-        MembershipPlan silver = new MembershipPlan("Silver",60.0f, 3);
-        MembershipPlan gold = new MembershipPlan("Gold",90.0f, 3);
-//        new GymManagement().run();
-        Members members = new Members("yuth", Gender.MALE, 19,"0987654321");
-        Membership membership = new Membership(members,basic);
-        System.out.println();
+        //  create membership plan template
+        MembershipPlan basic = new MembershipPlan("Basic",15.0f, 1);
+        MembershipPlan premium = new MembershipPlan("premium",60.0f, 6);
+        MembershipPlan annual  = new MembershipPlan("annual ",90.0f, 12);
+
+        //creating member
+        Members yuth = new Members("yuth", Gender.MALE, 19,"0987654321");
+        Members thonsar = new Members("Thonsar", Gender.MALE,20,"07654376");
+        Members Sovan   = new Members("Sovan",Gender.OTHER,20,"09812345");
+        Members Sombo   = new Members("Sombo",Gender.OTHER,20,"0982345");
+
+        // assign plan through membership
+        MembershipService membershipService= new MembershipService();
+        Membership membership= new Membership(yuth,basic);
+    System.out.println(membership);
+//        membershipService.listAll();
+    PaymentService paymentService = new PaymentService();
+    Payment payment = paymentService.processPayment(membership,0.0f, PaymentMethod.KHQR);
+    System.out.println(payment);
+
         input.close();
 
     }
-}
 //    Members yuth = new Members("Yuth", Gender.MALE,19,"098765432", active , silver );
 //    MemberStatus active= MemberStatus.ACTIVE;
 //    MemberStatus suspend = MemberStatus.SUSPEND;

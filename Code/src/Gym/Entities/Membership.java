@@ -27,7 +27,6 @@ public class Membership {
 
   // Getters and Setters
 
- 
   public String getSubcriptionID(){ return this.membershipId;}
   public LocalDateTime getStartDate() {
     return startDate;
@@ -37,6 +36,9 @@ public class Membership {
   }
   public MembershipPlan getPlan(){
     return plan;
+  }
+  public String getMemID(){
+    return this.memID;
   }
   public MemberStatus getStatus() {
     return status;

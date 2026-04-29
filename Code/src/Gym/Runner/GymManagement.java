@@ -45,6 +45,7 @@ public class GymManagement {
             System.out.println("""
                 \n====== MEMBER MENU ======
                 1. Add Member
+                2.Add Membership
                 2. View All Members
                 0. Back
                 =========================""");
@@ -55,7 +56,10 @@ public class GymManagement {
                     Members m = memberService.createMember(input);
                     memberService.addMember(m);
                 }
-                case 2 -> {
+                case 2-> {
+
+                }
+                case 3 -> {
                     memberService.listAll();
                 }
                 case 0 -> System.out.println("Back...");

@@ -10,14 +10,14 @@ import Gym.Model.Members;
 public class MembershipService {
     ArrayList<Membership> membershipList= new ArrayList<>();
     public Membership createMembership( Members member, MembershipPlan plan ){
-        Membership membership=new Membership(null, plan);
+        Membership membership=new Membership(member, plan);
         membershipList.add(membership);
         return membership;
     }
 
     public Membership findByID(String ID){
         for( Membership ms: membershipList){
-            if(ms.getSubID().equals(ID)) {
+            if(ms.getSubcriptionID().equals(ID)) {
                 return ms;
             }
         }
