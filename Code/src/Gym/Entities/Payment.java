@@ -58,8 +58,8 @@ public String toString() {
     return """
             Payment ID      : %s
             Subscription ID : %s
-            Member ID       :%s
-            Member Name     :
+            Member ID       : %s 
+            Member Name     : %s
             Discount        :%.0f%%
             Method          :%s
             Final Amount    :$%.2f
