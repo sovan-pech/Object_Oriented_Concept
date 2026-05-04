@@ -39,6 +39,9 @@ void main(String[] args) {
         // assign plan through membership
         MembershipService membershipService= new MembershipService();
         Membership membership= new Membership(yuth,basic);
+
+        membershipService.createMembership(yuth,basic);
+        membershipService.createMembership(thonsar,premium);
     System.out.println(membership);
 //        membershipService.listAll();
     PaymentService paymentService = new PaymentService();

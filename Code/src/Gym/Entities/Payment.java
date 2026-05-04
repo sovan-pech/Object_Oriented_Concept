@@ -59,9 +59,10 @@ public String toString() {
             Payment ID      : %s
             Subscription ID : %s
             Member ID       :%s
+            Member Name     :
             Discount        :%.0f%%
             Method          :%s
             Final Amount    :$%.2f
-            """.formatted(paymentID, subcriptionID,membership.getMemID(), discount * 100, method.name(), finalAmount);
+            """.formatted(paymentID, subcriptionID,membership.getMember().getID(),membership.getMember().getName(), discount * 100, method.name(), finalAmount);
 }
 }
