@@ -38,13 +38,13 @@ void main(String[] args) {
         Members thonsar = new Members("Thonsar", Gender.MALE,20,"07654376");
         Members Sovan   = new Members("Sovan",Gender.OTHER,20,"09812345");
         Members Sombo   = new Members("Sombo",Gender.OTHER,20,"0982345");
-        Members vathna = new Members("vathna boy zin", Gender.OTHER,30,"0987654321");
+        Members Sar = new Members("Sar kboy", Gender.MALE, 30, "0987654321");
 
         // assign plan through membership
         MembershipService membershipService= new MembershipService();
         Membership yuthSub= membershipService.createMembership(yuth,basic);
         Membership thonsarSub= membershipService.createMembership(thonsar,annual);
-        Membership vathnaSub = membershipService.createMembership(vathna,annual);
+        Membership SarSub = membershipService.createMembership(Sar,basic);
 
         membershipService.listAll();
 //        membershipService.listAll();
