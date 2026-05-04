@@ -31,8 +31,9 @@ void main(String[] args) {
         MembershipPlan basic = new MembershipPlan("Basic",15.0f, 1);
         MembershipPlan premium = new MembershipPlan("premium",60.0f, 6);
         MembershipPlan annual  = new MembershipPlan("annual ",90.0f, 12);
-
         //creating member
+
+
         Members yuth = new Members("yuth", Gender.MALE, 19,"0987654321");
         Members thonsar = new Members("Thonsar", Gender.MALE,20,"07654376");
         Members Sovan   = new Members("Sovan",Gender.OTHER,20,"09812345");
