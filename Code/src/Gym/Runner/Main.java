@@ -1,12 +1,10 @@
 
-import Gym.Base.Person;
 import Gym.Entities.Membership;
 import Gym.Entities.MembershipPlan;
 import Gym.Entities.Payment;
 import Gym.Enum.Gender;
 import Gym.Enum.PaymentMethod;
-import Gym.Model.Members;
-import Gym.Service.MemberService;
+import Gym.Model.Member;
 import Gym.Service.MembershipService;
 import Gym.Service.PaymentService;
 
@@ -35,13 +33,13 @@ void main(String[] args) {
         //creating member
 
 
-        Members yuth = new Members("yuth", Gender.MALE, 19,"0987654321");
-        Members thonsar = new Members("Thonsar", Gender.MALE,20,"07654376");
-        Members Sovan   = new Members("Sovan",Gender.OTHER,20,"09812345");
-        Members Sombo   = new Members("Sombo",Gender.OTHER,20,"0982345");
-        Members Sar = new Members("Sar kboy", Gender.MALE, 30, "0987654321");
-        Members ok = new Members("", Gender.OTHER,-2,"09832");
-        System.out.println(ok);
+        Member yuth = new Member("yuth", Gender.MALE, 19,"0987654321");
+        Member thonsar = new Member("Thonsar", Gender.MALE,20,"07654376");
+        Member Sovan   = new Member("Sovan",Gender.OTHER,20,"09812345");
+        Member Sombo   = new Member("Sombo",Gender.OTHER,20,"0982345");
+        Member Sar = new Member("Sar kboy", Gender.MALE, 30, "0987654321");
+//        Members ok = new Members("", Gender.OTHER,-2,"09832");
+//        System.out.println(ok);
 
         // assign plan through membership
         MembershipService membershipService= new MembershipService();
@@ -52,9 +50,9 @@ void main(String[] args) {
         membershipService.listAll();
 //        membershipService.listAll();
     // yuth ppay
-//        PaymentService paymentService = new PaymentService();
-//        Payment yuthPayment = paymentService.processPayment(yuthSub,0.0f, PaymentMethod.KHQR);
-//        System.out.println(yuthPayment);
+        PaymentService paymentService = new PaymentService();
+        Payment yuthPayment = paymentService.processPayment(yuthSub,0.0f, PaymentMethod.KHQR);
+        System.out.println(yuthPayment);
         // thonsar pay
 
 //        Payment thonsarPayment= paymentService.processPayment(thonsarSub,0.)

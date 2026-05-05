@@ -1,24 +1,23 @@
 package Gym.Entities;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import Gym.Enum.MemberStatus;
-import Gym.Model.Members;
+import Gym.Model.Member;
 
 
 public class Membership {
   private static int count=0;
   private String membershipId;
-  private Members members;
+  private Member member;
   private LocalDateTime startDate;
   private LocalDateTime endDate;
   private MemberStatus status;
   private MembershipPlan plan;
   // constructor
-  public Membership(Members member, MembershipPlan plan) {
+  public Membership(Member member, MembershipPlan plan) {
     this.membershipId ="SUB-"+(++count);
     // this.member = member;
-    this.members=member;
+    this.member =member;
     this.plan=plan;
     this.startDate = LocalDateTime.now();
     this.endDate = LocalDateTime.now().plusMonths(plan.getDuration());
@@ -37,8 +36,8 @@ public class Membership {
   public MembershipPlan getPlan(){
     return plan;
   }
-  public Members getMember(){
-    return members;
+  public Member getMember(){
+    return member;
   }
 
   public MemberStatus getStatus() {
@@ -58,7 +57,7 @@ public String toString() {
             End Date        : %s
             Status          : %s
             ----------------------------------
-            """, membershipId, this.members.getID(),this.members.getName(), plan.getName(),startDate, endDate, status);
+            """, membershipId, this.member.getID(),this.member.getName(), plan.getName(),startDate, endDate, status);
 }
 
 }
