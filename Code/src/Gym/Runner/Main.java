@@ -31,6 +31,7 @@ void main(String[] args) {
         MembershipPlan basic = new MembershipPlan("Basic",15.0f, 1);
         MembershipPlan premium = new MembershipPlan("premium",60.0f, 6);
         MembershipPlan annual  = new MembershipPlan("annual ",90.0f, 12);
+
         //creating member
 
 
@@ -39,6 +40,8 @@ void main(String[] args) {
         Members Sovan   = new Members("Sovan",Gender.OTHER,20,"09812345");
         Members Sombo   = new Members("Sombo",Gender.OTHER,20,"0982345");
         Members Sar = new Members("Sar kboy", Gender.MALE, 30, "0987654321");
+        Members ok = new Members("", Gender.OTHER,-2,"09832");
+        System.out.println(ok);
 
         // assign plan through membership
         MembershipService membershipService= new MembershipService();
