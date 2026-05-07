@@ -2,6 +2,7 @@ package Gym.Entities;
 
 import java.time.LocalDateTime;
 
+import Gym.Enum.MemberStatus;
 import Gym.Enum.PaymentMethod;
 
 public class Payment {
@@ -24,6 +25,7 @@ public class Payment {
         this.paymentDate=LocalDateTime.now();
         this.payAmount=memShip.getPlan().getPlanPrice();
         this.finalAmount= calculateFinalAmount();
+        memShip.setStatus(MemberStatus.ACTIVE);
     }
     // accessor
     public void setDiscount(float discount){

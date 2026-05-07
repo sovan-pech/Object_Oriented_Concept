@@ -47,6 +47,7 @@ public static  void main(String[] args) {
         Membership yuthSub= membershipService.createMembership(yuth,basic);
         Membership thonsarSub= membershipService.createMembership(thonsar,annual);
         Membership SarSub = membershipService.createMembership(Sar,basic);
+       
 
         membershipService.listAll();
 //        membershipService.listAll();

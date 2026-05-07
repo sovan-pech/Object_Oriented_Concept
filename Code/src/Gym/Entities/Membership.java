@@ -21,7 +21,7 @@ public class Membership {
     this.plan=plan;
     this.startDate = LocalDateTime.now();
     this.endDate = LocalDateTime.now().plusMonths(plan.getDuration());
-    this.status = MemberStatus.ACTIVE;
+    this.status = MemberStatus.INACTIVE;
   }
 
   // Getters and Setters
@@ -36,13 +36,17 @@ public class Membership {
   public MembershipPlan getPlan(){
     return plan;
   }
+  public void setStatus(MemberStatus status) {
+    this.status = status;
+  }
+
   public Member getMember(){
     return member;
   }
 
-  public MemberStatus getStatus() {
-    return status;
-  }
+
+
+
  @Override
 public String toString() {
     return String.format("""
