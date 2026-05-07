@@ -22,7 +22,7 @@ public class Membership implements Displayable{
     this.plan=plan;
     this.startDate = LocalDateTime.now();
     this.endDate = LocalDateTime.now().plusMonths(plan.getDuration());
-    this.status = MemberStatus.ACTIVE;
+    this.status = MemberStatus.INACTIVE;
   }
 
   // Getters and Setters
@@ -41,10 +41,15 @@ public class Membership implements Displayable{
   public MembershipPlan getPlan(){
     return plan;
   }
+  public void setStatus(MemberStatus status) {
+    this.status = status;
+  }
+
   public Member getMember(){
     return member;
   }
 
+<<<<<<< HEAD
   public MemberStatus getStatus() {
     return status;
   }
@@ -65,6 +70,11 @@ public class Membership implements Displayable{
       
   }
   
+=======
+
+
+
+>>>>>>> 6b766e33c9dbf58c61a315b186d61665a2fbd0e8
  @Override
 public String toString() {
     return String.format("""
