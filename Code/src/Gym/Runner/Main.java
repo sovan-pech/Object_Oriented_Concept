@@ -1,4 +1,4 @@
-
+package Gym.Runner;
 import Gym.Entities.Membership;
 import Gym.Entities.MembershipPlan;
 import Gym.Entities.Payment;
@@ -22,7 +22,8 @@ import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutte
-void main(String[] args) {
+public class Main{
+public static  void main(String[] args) {
         Scanner input = new Scanner(System.in);
 
         //  create membership plan template
@@ -57,10 +58,8 @@ void main(String[] args) {
 
 //        Payment thonsarPayment= paymentService.processPayment(thonsarSub,0.)
 
-
-
         input.close();
-
+}
     }
 //    Members yuth = new Members("Yuth", Gender.MALE,19,"098765432", active , silver );
 //    MemberStatus active= MemberStatus.ACTIVE;
