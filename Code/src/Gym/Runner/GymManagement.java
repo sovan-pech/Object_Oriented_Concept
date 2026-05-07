@@ -6,14 +6,12 @@ import Gym.Model.Member;
 import Gym.Service.MemberService;
 import Gym.Service.MembershipService;
 import Gym.Service.PaymentService;
-import Gym.Service.StaffService;
 
 import java.util.Scanner;
 
 public class GymManagement {
     public static final String gymName = "SEBA-FITNESS";
     private MemberService memberService = new MemberService();
-    private StaffService staffService = new StaffService();
     private PaymentService paymentService = new PaymentService();
     private MembershipService membershipService = new MembershipService();
     Scanner input = new Scanner(System.in);
