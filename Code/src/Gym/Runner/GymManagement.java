@@ -1,4 +1,3 @@
-package Gym.Runner;
 
 import Gym.Entities.Membership;
 import Gym.Enum.PaymentMethod;
