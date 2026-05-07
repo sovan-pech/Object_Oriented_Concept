@@ -3,9 +3,10 @@ package Gym.Entities;
 import java.time.LocalDateTime;
 
 import Gym.Enum.PaymentMethod;
+import Gym.Interface.Displayable;
 
-public class Payment {
-    private  static int count=0;
+public class Payment implements Displayable {
+    private static int count = 0;
     private double payAmount; // base amount
     private String paymentID; //
     private float discount; // if there's a discount
@@ -13,39 +14,52 @@ public class Payment {
     private LocalDateTime paymentDate;
     private PaymentMethod method; // in what method ? KHQR ? credit card?
     private double finalAmount;
-    private  Membership membership;
+    private Membership membership;
 
-    public Payment( Membership memShip, float discount , PaymentMethod method){
-        this.paymentID="PM-"+(++count);
-        this.membership=memShip;
-        this.subcriptionID= memShip.getSubcriptionID();
-        this.discount=discount;
-        this.method=method;
-        this.paymentDate=LocalDateTime.now();
-        this.payAmount=memShip.getPlan().getPlanPrice();
-        this.finalAmount= calculateFinalAmount();
+    public Payment(Membership memShip, float discount, PaymentMethod method) {
+        this.paymentID = "PM-" + (++count);
+        this.membership = memShip;
+        this.subcriptionID = memShip.getSubcriptionID();
+        this.discount = discount;
+        this.method = method;
+        this.paymentDate = LocalDateTime.now();
+        this.payAmount = memShip.getPlan().getPlanPrice();
+        this.finalAmount = calculateFinalAmount();
     }
+
     // accessor
-    public void setDiscount(float discount){
-        if(discount>0)
-            this.discount=discount;
-        else{
-            this.discount=0;
+    public void setDiscount(float discount) {
+        if (discount > 0)
+            this.discount = discount;
+        else {
+            this.discount = 0;
         }
     }
-    public float getDiscount(){
+
+    public float getDiscount() {
         return discount;
     }
 
-    public LocalDateTime getPaymentDate(){
+    public LocalDateTime getPaymentDate() {
         return this.paymentDate;
     }
-    public String getPaymentID()    { return paymentID; }
-    public PaymentMethod getMethod(){ return method; }
-    public double getPayAmount()    { return payAmount; }
-    public Membership getMembership(){
+
+    public String getPaymentID() {
+        return paymentID;
+    }
+
+    public PaymentMethod getMethod() {
+        return method;
+    }
+
+    public double getPayAmount() {
+        return payAmount;
+    }
+
+    public Membership getMembership() {
         return membership;
     }
+
     public double calculateFinalAmount() {
         return switch (method) {
             case KHQR -> payAmount * (1 - discount);
@@ -53,16 +67,43 @@ public class Payment {
             case CREDITCARD -> payAmount * (1 - discount) * 1.05;
         };
     }
+
     @Override
-public String toString() {
-    return """
-            Payment ID      : %s
-            Subscription ID : %s
-            Member ID       : %s 
-            Member Name     : %s
-            Discount        :%.0f%%
-            Method          :%s
-            Final Amount    :$%.2f
-            """.formatted(paymentID, subcriptionID,membership.getMember().getID(),membership.getMember().getName(), discount * 100, method.name(), finalAmount);
-}
+    public void displayable() {
+
+        System.out.println(String.format("""
+                ----------------------------------
+                      PAYMENT INFORMATION
+                ----------------------------------
+                Payment ID      : %s
+                Subscription ID : %s
+                Member ID       : %s
+                Member Name     : %s
+                Discount        : %.0f%%
+                Method          : %s
+                Final Amount    : $%.2f
+                ----------------------------------
+                """,
+                paymentID,
+                subcriptionID,
+                membership.getMember().getID(),
+                membership.getMember().getName(),
+                discount * 100,
+                method.name(),
+                finalAmount));
+    }
+
+    @Override
+    public String toString() {
+        return """
+                Payment ID      : %s
+                Subscription ID : %s
+                Member ID       : %s
+                Member Name     : %s
+                Discount        :%.0f%%
+                Method          :%s
+                Final Amount    :$%.2f
+                """.formatted(paymentID, subcriptionID, membership.getMember().getID(),
+                membership.getMember().getName(), discount * 100, method.name(), finalAmount);
+    }
 }

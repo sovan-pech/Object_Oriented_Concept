@@ -1,46 +1,82 @@
 package Gym.Model;
 
 import Gym.Enum.Gender;
+import Gym.Interface.Displayable;
 import Gym.Base.Person;
 
-public class Staff extends Person {
-    private  static  int count =0;
+public class Staff extends Person implements Displayable {
+    private static int count = 0;
     private String role;
     private Double salary;
-    //constructor
-    public Staff(String name, int age, Gender gender, String phoneNumber, String role, Double salary){
+
+    // constructor
+    public Staff(String name, int age, Gender gender, String phoneNumber, String role, Double salary) {
         super(name, age, gender, phoneNumber);
-        super.ID="ST"+(++count);
+        super.ID = "ST" + (++count);
         this.setRole(role);
         this.setSalary(salary);
     }
+
     // accessor
-    public  String getRole() {
+    public String getRole() {
         return this.role;
     }
-    public Double getSalary(){
+
+    public Double getSalary() {
         return this.salary;
     }
-    public String getID(){ return ID;}
+
+    public String getID() {
+        return ID;
+    }
 
     protected void setRole(String role) {
-        if (role == null || role.isBlank()){
+        if (role == null || role.isBlank()) {
             throw new IllegalArgumentException("Role cannot be empty");
         }
-            this.role = role;
+        this.role = role;
     }
+
     protected void setSalary(Double salary) {
         if (salary > 0)
             this.salary = salary;
         else
             this.salary = 0.0;
     }
-    public void setName(String name){
+
+    public void setName(String name) {
         super.setName(name);
     }
-    public void setGender(Gender gender){
+
+    public void setGender(Gender gender) {
         super.setGender(gender);
     }
+
+    @Override
+    public void displayable() {
+
+        System.out.println(String.format("""
+                ----------------------------------
+                        STAFF INFORMATION
+                ----------------------------------
+                ID              : %s
+                Name            : %s
+                Age             : %d
+                Gender          : %s
+                Phone Number    : %s
+                Role            : %s
+                Salary          : $%.2f
+                ----------------------------------
+                """,
+                this.ID,
+                super.getName(),
+                super.getAge(),
+                super.getGender(),
+                super.getPhoneNumber(),
+                this.role,
+                this.salary));
+    }
+
     @Override
     public String toString() {
         return String.format("""
@@ -55,7 +91,7 @@ public class Staff extends Person {
                 Role            : %s
                 Salary          : $%.2f
                 ----------------------------------
-                """,this.ID,
+                """, this.ID,
                 super.getName(),
                 super.getAge(),
                 super.getGender(),
