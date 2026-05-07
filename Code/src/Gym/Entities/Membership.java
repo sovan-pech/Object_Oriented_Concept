@@ -2,10 +2,11 @@ package Gym.Entities;
 import java.time.LocalDateTime;
 
 import Gym.Enum.MemberStatus;
+import Gym.Interface.Displayable;
 import Gym.Model.Member;
 
 
-public class Membership {
+public class Membership implements Displayable{
   private static int count=0;
   private String membershipId;
   private Member member;
@@ -25,8 +26,12 @@ public class Membership {
   }
 
   // Getters and Setters
-
+  
   public String getSubcriptionID(){ return this.membershipId;}
+  public void setStatus(MemberStatus status) {
+    this.status = status;
+  }
+
   public LocalDateTime getStartDate() {
     return startDate;
   }
@@ -44,9 +49,32 @@ public class Membership {
     return member;
   }
 
+<<<<<<< HEAD
+  public MemberStatus getStatus() {
+    return status;
+  }
+  @Override
+  public void displayable() {
+      System.out.println("----------------------------------");
+      System.out.println("          MEMBERSHIP INFO         ");
+      System.out.println("----------------------------------");
+      System.out.println("Membership ID   : %s" +membershipId);
+      System.out.println("Member ID       : %s" +this.member.getID());
+      System.out.println("Member Name     : %s" +this.member.getName());
+      System.out.println("Plan Name       : %s" +plan.getName());
+      System.out.println("Start Date      : %s" +startDate);
+      System.out.println("End Date        : %s" +endDate);
+      System.out.println("Status          : %s" +status);
+      System.out.println("----------------------------------");
+
+      
+  }
+  
+=======
 
 
 
+>>>>>>> 6b766e33c9dbf58c61a315b186d61665a2fbd0e8
  @Override
 public String toString() {
     return String.format("""
