@@ -1,6 +1,6 @@
 package Gym.Entities;
 
-import java.util.UUID; //not used anywhere
+//not used anywhere
 
 import Gym.Interface.Displayable;
 public class MembershipPlan implements Displayable{

@@ -23,7 +23,8 @@ public class MemberService implements Searchable {
         String name = input.nextLine().trim(); // trim use to trim the waste space and take the value only 
 
         System.out.print("Enter Age                 : ");
-        int age = Integer.parseInt(input.nextLine());
+        int age = input.nextInt();
+        input.nextLine();
 
         //ask to input gender
         System.out.print("Enter Gender (MALE/FEMALE): ");

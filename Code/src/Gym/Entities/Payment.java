@@ -28,11 +28,20 @@ public class Payment implements Displayable {
         this.paymentDate=LocalDateTime.now();
         this.setPayAmount(payAmount);
         this.finalAmount= calculateFinalAmount();
-       
-
     }
 
     // accessor
+    // set amount
+    public void setPayAmount(double payAmount) {
+        if (payAmount == membership.getPlan().getPlanPrice()) {
+            this.payAmount = payAmount; 
+            membership.setStatus(MemberStatus.ACTIVE);
+        } else {
+            this.payAmount = 0;
+            System.out.println("Invalid amount. Expected: $" + membership.getPlan().getPlanPrice());
+            membership.setStatus(MemberStatus.INACTIVE);
+        }
+    }
     public void setDiscount(float discount) {
         if (discount >= 0)
             this.discount = discount;
@@ -64,16 +73,7 @@ public class Payment implements Displayable {
     public Membership getMembership() {
         return membership;
     }
-    public void setPayAmount(double payAmount) {
-    if (payAmount == membership.getPlan().getPlanPrice()) {
-        this.payAmount = payAmount; 
-        membership.setStatus(MemberStatus.ACTIVE);
-    } else {
-        this.payAmount = 0;
-        System.out.println("Invalid amount. Expected: $" + membership.getPlan().getPlanPrice());
-        membership.setStatus(MemberStatus.INACTIVE);
-    }
-}
+   
     //set method 
     private void setMethod(PaymentMethod method){
         if (method ==null) {
