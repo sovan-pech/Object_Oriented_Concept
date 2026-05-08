@@ -17,20 +17,20 @@ public class Payment implements Displayable {
     private double finalAmount;
     private Membership membership;
 
-    public Payment( Membership memShip, float discount , PaymentMethod method){
+    public Payment( Membership memShip, float discount , PaymentMethod method, double payAmount){
         this.paymentID="PM-"+(++count);
         this.membership=memShip;
         this.subcriptionID= memShip.getSubcriptionID();
-        this.discount=discount;
-        this.method=method;
+        this.setDiscount(discount);
+        this.setMethod(method);
         this.paymentDate=LocalDateTime.now();
-        this.payAmount=memShip.getPlan().getPlanPrice();
+        this.setPayAmount(payAmount);
         this.finalAmount= calculateFinalAmount();
     }
 
     // accessor
     public void setDiscount(float discount) {
-        if (discount > 0)
+        if (discount >= 0)
             this.discount = discount;
         else {
             this.discount = 0;
@@ -60,7 +60,24 @@ public class Payment implements Displayable {
     public Membership getMembership() {
         return membership;
     }
-
+    public void setPayAmount(double payAmount) {
+    if (payAmount == membership.getPlan().getPlanPrice()) {
+        this.payAmount = payAmount; 
+        membership.setStatus(MemberStatus.ACTIVE);
+    } else {
+        this.payAmount = 0;
+        System.out.println("Invalid amount. Expected: $" + membership.getPlan().getPlanPrice());
+        membership.setStatus(MemberStatus.INACTIVE);
+    }
+}
+    //set method 
+    private void setMethod(PaymentMethod method){
+        if (method ==null) {
+            System.out.println("Method cannot be null! it will be set to BY CASH as default");
+            this.method=PaymentMethod.BYCASH;
+        }
+        this.method=method;
+    }
     public double calculateFinalAmount() {
         return switch (method) {
             case KHQR -> payAmount * (1 - discount);

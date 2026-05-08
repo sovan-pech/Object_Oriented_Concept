@@ -10,9 +10,9 @@ import java.util.ArrayList;
 
 public class PaymentService {
     private ArrayList<Payment> paymentList = new ArrayList<>();
-    public Payment processPayment(Membership membership, float discount, PaymentMethod paymentMethod ){
-        Payment payment = new Payment(membership,discount,paymentMethod);
-        System.out.println("Payment processed: "+payment.getPaymentID());
+    public Payment processPayment(Membership membership, float discount, PaymentMethod paymentMethod, double payAmount ){
+        Payment payment = new Payment(membership,discount,paymentMethod, payAmount );
+        System.out.printf("Payment processed:%s\n",payment.getPaymentID());
         paymentList.add(payment);
         return payment;
     }

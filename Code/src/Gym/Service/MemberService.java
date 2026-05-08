@@ -1,48 +1,80 @@
 package Gym.Service;
 
+import Gym.Entities.Membership;
 import Gym.Entities.MembershipPlan;
 import Gym.Enum.Gender;
+import Gym.Interface.Searchable;
 import Gym.Model.Member;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class MemberService {
+public class MemberService implements Searchable {
     ArrayList<Member> memberList = new ArrayList<>();
-    private MembershipPlan[] plans = {
+    ArrayList<Membership> membershipList = new ArrayList<>();
+    public MembershipPlan[] plans = {
             new MembershipPlan("Basic", 19.99, 1),
             new MembershipPlan("Premium", 39.99, 3),
             new MembershipPlan("Annual", 59.99, 12)
     };
 
-    public Member createMember(Scanner input) {
+    public Membership createMember(Scanner input) {
         System.out.print("Enter Name                : ");
-        String name = input.nextLine().trim();
+        String name = input.nextLine().trim(); // trim use to trim the waste space and take the value only 
 
         System.out.print("Enter Age                 : ");
         int age = Integer.parseInt(input.nextLine());
 
+        //ask to input gender
         System.out.print("Enter Gender (MALE/FEMALE): ");
         Gender genderType;
-        try {
-            genderType = Gender.valueOf(input.nextLine().toUpperCase());
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid gender. Defaulting to MALE.");
-            genderType = Gender.MALE;
+        String gender=input.nextLine().toUpperCase(); // change to upper case since in enum is all uppercase 
+        if(gender.equals("MALE") || gender.equals("FEMALE")){
+            genderType= Gender.valueOf(gender); 
         }
-
+        else{
+            System.out.println("Invalid input! set to default gender");
+            genderType=Gender.OTHER;
+        }
         System.out.print("Enter Phone Number        : ");
         String phoneNumber = input.nextLine().trim();
 
-        return new Member(name, genderType, age, phoneNumber);
+        // choose plan 
+        System.out.println("\nAvailable Plan:"+plans.length);
+        for( int i =0; i < plans.length;i++){
+           System.out.printf("%d: %s - $%.2f%n",i+1,plans[i].getName(),plans[i].getPlanPrice());
+        }
+        int selectPlan=0;
+        while(selectPlan<1 || selectPlan>plans.length){
+            System.out.println("Choose Plan:");
+            selectPlan=input.nextInt();
+        }
+        // create object 
+        Member member = new Member(name, genderType, age, phoneNumber);
+        Membership membership = new Membership(member, plans[selectPlan-1]);
+
+        // add to list 
+        input.nextLine();   
+        return membership;
     }
+
+    public MemberService(){
+        
+    }
+
     //add member func
     public void addMember(Member member){
         memberList.add(member);
-        System.out.println("Member added successful! ");
+        System.out.println("Member added successful!\n");
+    }
+    // add membership 
+    public void addMembership(Membership membership){
+        membershipList.add(membership);
     }
     //
-    public Member findByID(String id){
+   
+    public Member findMemberByID(String id){
+        System.out.printf("Find Member with ID %s .\n",id);
             for(Member m : memberList){
                 if(m.getID().equals(id)){
                     return m;
@@ -50,8 +82,18 @@ public class MemberService {
             }
             return null;
     }
+   
+    public Membership findByID(String id){
+        System.out.printf("Find membership with ID %s .\n",id);
+        for(Membership findMembership:membershipList){
+            if (findMembership.getSubcriptionID().equals(id)) {
+                return findMembership;
+            }
+        }
+        return null;
+    }
     //list all member
-    public void listAll() {
+    public void listAllMember() {
         if (memberList.isEmpty()) {
             System.out.println("No members found.");
             return;
@@ -59,5 +101,15 @@ public class MemberService {
         System.out.println("====== ALL MEMBERS ======");
         for (Member m : memberList)
             System.out.println(m);
+    }
+    public void listAllMembership(){
+        if(membershipList.isEmpty()){
+            System.out.println("The array list is empty!");
+            return;
+        }
+        System.out.println("\nAll Membership");
+        for(Membership memberships: membershipList){
+            System.out.println(memberships);
+        }
     }
 }
