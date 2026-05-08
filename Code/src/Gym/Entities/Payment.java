@@ -17,6 +17,8 @@ public class Payment implements Displayable {
     private double finalAmount;
     private Membership membership;
 
+    
+
     public Payment( Membership memShip, float discount , PaymentMethod method, double payAmount){
         this.paymentID="PM-"+(++count);
         this.membership=memShip;
@@ -26,6 +28,8 @@ public class Payment implements Displayable {
         this.paymentDate=LocalDateTime.now();
         this.setPayAmount(payAmount);
         this.finalAmount= calculateFinalAmount();
+       
+
     }
 
     // accessor
