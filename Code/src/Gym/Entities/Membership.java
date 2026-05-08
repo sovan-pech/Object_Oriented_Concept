@@ -47,7 +47,6 @@ public class Membership implements Displayable{
     return member;
   }
 
-<<<<<<< HEAD
   public MemberStatus getStatus() {
     return status;
   }
@@ -68,11 +67,6 @@ public class Membership implements Displayable{
       
   }
   
-=======
-
-
-
->>>>>>> 6b766e33c9dbf58c61a315b186d61665a2fbd0e8
  @Override
 public String toString() {
     return String.format("""
