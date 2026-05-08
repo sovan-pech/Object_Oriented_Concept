@@ -41,9 +41,7 @@ public class Membership implements Displayable{
   public MembershipPlan getPlan(){
     return plan;
   }
-  public void setStatus(MemberStatus status) {
-    this.status = status;
-  }
+
 
   public Member getMember(){
     return member;
