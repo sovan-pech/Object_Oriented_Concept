@@ -21,6 +21,7 @@ public class GymManagement {
        
     }
     public void run() {
+
          System.out.println("-----Add member------");
         Member thonsar = new Member("thonsar", Gender.MALE, 20, "09832134");
        
