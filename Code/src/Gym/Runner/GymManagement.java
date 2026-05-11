@@ -20,26 +20,20 @@ public class GymManagement {
         System.out.println("Current staff       :" + currenStaff.getName());
        
     }
-
-    Scanner input = new Scanner(System.in);
-
     public void run() {
          System.out.println("-----Add member------");
         Member thonsar = new Member("thonsar", Gender.MALE, 20, "09832134");
        
         Membership thonsaMembership = new Membership(thonsar, memberService.plans[0]);
-        
-
         Member sovan = new Member("Sovan", Gender.MALE, 20, "094321325");
         Membership sovanMembership= new Membership(sovan, memberService.plans[2]);
         // add to service
-        memberService.addMember(thonsar);
         memberService.addMembership(thonsaMembership);
-        memberService.addMember(sovan);
         memberService.addMembership(sovanMembership);
         memberService.listAllMembership();
         paymentService.processPayment(thonsaMembership, 0, PaymentMethod.KHQR, 19.99);
         memberService.listAllMembership();
+        memberService.listAllMember();
 
         System.out.println(memberService.findByID("SUB-2"));
     }

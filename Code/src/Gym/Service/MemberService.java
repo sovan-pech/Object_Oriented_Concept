@@ -17,6 +17,11 @@ public class MemberService implements Searchable {
             new MembershipPlan("Premium", 39.99, 3),
             new MembershipPlan("Annual", 59.99, 12)
     };
+        // add membership 
+    public void addMembership(Membership membership){
+        memberList.add(membership.getMember());
+        membershipList.add(membership);
+    }
 
     public Membership createMember(Scanner input) {
         System.out.print("Enter Name                : ");
@@ -54,24 +59,11 @@ public class MemberService implements Searchable {
         Member member = new Member(name, genderType, age, phoneNumber);
         Membership membership = new Membership(member, plans[selectPlan-1]);
 
-        // add to list 
         input.nextLine();   
         return membership;
     }
 
-    public MemberService(){
-        
-    }
 
-    //add member func
-    public void addMember(Member member){
-        memberList.add(member);
-        System.out.println("Member added successful!\n");
-    }
-    // add membership 
-    public void addMembership(Membership membership){
-        membershipList.add(membership);
-    }
     //
    
     public Member findMemberByID(String id){
