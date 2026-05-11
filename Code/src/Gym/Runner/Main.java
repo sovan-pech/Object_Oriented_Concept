@@ -7,14 +7,10 @@ package Gym.Runner;
 // import Gym.Enum.PaymentMethod;
 // import Gym.Model.Member;
 
-
-
-import java.lang.reflect.Member;
-
 // import Gym.Service.PaymentService;
 
 import java.util.Scanner;
-
+import Gym.Model.Member;
 import Gym.Enum.Gender;
 import Gym.Interface.Displayable;
 import Gym.Model.Staff;
@@ -23,6 +19,11 @@ import Gym.Model.Staff;
 public class Main {
         public static void main(String[] args) {
                 Scanner input = new Scanner(System.in);
+                // Member yuth = new Gym.Model.Member(null, null, 0, null);
+                // yuth.displayable();
+                // Staff vanda = new Staff(null, 0, null, null, null, 0.0);
+                // vanda.displayable();
+
                 new GymManagement().run();
                 
 

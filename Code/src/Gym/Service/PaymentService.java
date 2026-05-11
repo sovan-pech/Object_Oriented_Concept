@@ -17,6 +17,8 @@ public class PaymentService implements Searchable {
         paymentList.add(payment);
         return payment;
     }
+    //search payment by id
+    
     @Override
     public Payment findByID(String ID) {
         System.out.println("Find payment with this ID :"+ID);
@@ -27,6 +29,7 @@ public class PaymentService implements Searchable {
         }
         return null;
     }
+
     public void listAll() {
         if (paymentList.isEmpty()) {
             System.out.println("No payments found.");

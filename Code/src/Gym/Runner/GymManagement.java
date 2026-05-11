@@ -36,7 +36,7 @@ public class GymManagement {
         memberService.listAllMembership();
         memberService.listAllMember();
 
-        System.out.println(memberService.findByID("SUB-2"));
+        System.out.println(memberService.findByID("SUB-5"));
     }
     // public void run() {
     // int choice = -1;

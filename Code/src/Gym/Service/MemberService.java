@@ -17,7 +17,11 @@ public class MemberService implements Searchable {
             new MembershipPlan("Premium", 39.99, 3),
             new MembershipPlan("Annual", 59.99, 12)
     };
-        // add membership 
+        /**
+         * add member and membership to the list 
+         * @param membership
+         * 
+        */
     public void addMembership(Membership membership){
         memberList.add(membership.getMember());
         membershipList.add(membership);
@@ -64,8 +68,11 @@ public class MemberService implements Searchable {
     }
 
 
-    //
-   
+    /**
+     *  Compare given ID with the ID of member in the memberlist 
+     * @param id
+     * @return object if found, else return null
+     */
     public Member findMemberByID(String id){
         System.out.printf("Find Member with ID %s .\n",id);
             for(Member m : memberList){
@@ -85,7 +92,9 @@ public class MemberService implements Searchable {
         }
         return null;
     }
-    //list all member
+    /**
+     * display all member 
+     */
     public void listAllMember() {
         if (memberList.isEmpty()) {
             System.out.println("No members found.");
@@ -95,6 +104,11 @@ public class MemberService implements Searchable {
         for (Member m : memberList)
             System.out.println(m);
     }
+
+    /**
+     * display all membership
+    
+    */
     public void listAllMembership(){
         if(membershipList.isEmpty()){
             System.out.println("The array list is empty!");

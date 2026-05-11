@@ -32,7 +32,9 @@ public class Staff extends Person implements Displayable {
 
     protected void setRole(String role) {
         if (role == null || role.isBlank()) {
-            throw new IllegalArgumentException("Role cannot be empty");
+            System.out.println("Role is null! set to Cashier as default");
+            this.role="Cashier";
+            return;
         }
         this.role = role;
     }
