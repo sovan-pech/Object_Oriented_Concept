@@ -51,20 +51,8 @@ public class Membership implements Displayable{
     return status;
   }
   @Override
-  public void displayable() {
-      System.out.println("----------------------------------");
-      System.out.println("          MEMBERSHIP INFO         ");
-      System.out.println("----------------------------------");
-      System.out.println("Membership ID   : %s" +membershipId);
-      System.out.println("Member ID       : %s" +this.member.getID());
-      System.out.println("Member Name     : %s" +this.member.getName());
-      System.out.println("Plan Name       : %s" +plan.getName());
-      System.out.println("Start Date      : %s" +startDate);
-      System.out.println("End Date        : %s" +endDate);
-      System.out.println("Status          : %s" +status);
-      System.out.println("----------------------------------");
-
-      
+  public void displayInfo() {
+      System.out.println(this.toString());
   }
   
  @Override

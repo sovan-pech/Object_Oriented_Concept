@@ -1,8 +1,6 @@
 package Gym.Entities;
 
 import java.time.LocalDateTime;
-
-import Gym.Enum.MemberStatus;
 import Gym.Enum.PaymentMethod;
 import Gym.Interface.Displayable;
 
@@ -16,6 +14,8 @@ public class Payment implements Displayable {
     private PaymentMethod method; // in what method ? KHQR ? credit card?
     private double finalAmount;
     private Membership membership;
+    public final String[] paymentStatus = {"PAID","UNPAID"};
+    private String status;
 
     
 
@@ -35,11 +35,14 @@ public class Payment implements Displayable {
     public void setPayAmount(double payAmount) {
         if (payAmount == membership.getPlan().getPlanPrice()) {
             this.payAmount = payAmount; 
-            membership.setStatus(MemberStatus.ACTIVE);
+            // paid 
+            status=paymentStatus[0];
+           
         } else {
             this.payAmount = 0;
             System.out.println("Invalid amount. Expected: $" + membership.getPlan().getPlanPrice());
-            membership.setStatus(MemberStatus.INACTIVE);
+            status=paymentStatus[1];
+            
         }
     }
     public void setDiscount(float discount) {
@@ -73,6 +76,10 @@ public class Payment implements Displayable {
     public Membership getMembership() {
         return membership;
     }
+     
+    public String getPaymentStatus(){
+        return status;
+    }
    
     //set method 
     private void setMethod(PaymentMethod method){
@@ -91,28 +98,8 @@ public class Payment implements Displayable {
     }
 
     @Override
-    public void displayable() {
-
-        System.out.println(String.format("""
-                ----------------------------------
-                      PAYMENT INFORMATION
-                ----------------------------------
-                Payment ID      : %s
-                Subscription ID : %s
-                Member ID       : %s
-                Member Name     : %s
-                Discount        : %.0f%%
-                Method          : %s
-                Final Amount    : $%.2f
-                ----------------------------------
-                """,
-                paymentID,
-                subcriptionID,
-                membership.getMember().getID(),
-                membership.getMember().getName(),
-                discount * 100,
-                method.name(),
-                finalAmount));
+    public void displayInfo() {
+        System.out.println(this.toString());
     }
 
     @Override

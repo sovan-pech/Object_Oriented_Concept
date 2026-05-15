@@ -3,6 +3,7 @@ package Gym.Service;
 import Gym.Entities.Membership;
 // import Gym.Entities.MembershipPlan;
 import Gym.Entities.Payment;
+import Gym.Enum.MemberStatus;
 import Gym.Enum.PaymentMethod;
 // import Gym.Model.Members;
 import Gym.Interface.Searchable;

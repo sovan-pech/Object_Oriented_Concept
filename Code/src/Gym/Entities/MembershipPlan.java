@@ -40,16 +40,10 @@ public class MembershipPlan implements Displayable{
         return planPrice;
     }
     public int getDuration(){ return  duration;}
-@Override
-public void displayable() {
-    System.out.println("----------------------------------");
-    System.out.println("         MEMBERSHIP PLAN          ");
-    System.out.println("----------------------------------");
-    System.out.println("ID              : %s" +getPlan_ID());
-    System.out.println("Plan Name       : %s" +getName());
-    System.out.println("Price           : $%.2f" +getPlanPrice());
-    System.out.println("Duration        : %d month(s)" +getDuration());
-}
+    @Override
+    public void displayInfo() {
+        System.out.println(this.toString());
+    }
     //to output
     @Override
     public String toString() {

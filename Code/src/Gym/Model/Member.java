@@ -1,10 +1,10 @@
 package Gym.Model;
 
 import Gym.Enum.Gender;
-import Gym.Interface.Displayable;
+
 import Gym.Base.Person;
 
-public class Member extends Person implements Displayable {
+public class Member extends Person {
 
     private static int count = 0;
     // constructor
@@ -29,11 +29,11 @@ public class Member extends Person implements Displayable {
         super.setPhoneNumber(phoneNumber);
     }
 
+    
     @Override
-    public void displayable() {
-        System.out.println(toString());
+    public void displayInfo() {
+        System.out.println(this.toString());
     }
-
     
     @Override
     public String toString() {

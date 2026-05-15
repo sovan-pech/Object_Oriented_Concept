@@ -1,10 +1,9 @@
 package Gym.Model;
 
 import Gym.Enum.Gender;
-import Gym.Interface.Displayable;
 import Gym.Base.Person;
 
-public class Staff extends Person implements Displayable {
+public class Staff extends Person  {
     private static int count = 0;
     private String role;
     private Double salary;
@@ -54,29 +53,11 @@ public class Staff extends Person implements Displayable {
         super.setGender(gender);
     }
 
-    @Override
-    public void displayable() {
 
-        System.out.println(String.format("""
-                ----------------------------------
-                        STAFF INFORMATION
-                ----------------------------------
-                ID              : %s
-                Name            : %s
-                Age             : %d
-                Gender          : %s
-                Phone Number    : %s
-                Role            : %s
-                Salary          : $%.2f
-                ----------------------------------
-                """,
-                this.ID,
-                super.getName(),
-                super.getAge(),
-                super.getGender(),
-                super.getPhoneNumber(),
-                this.role,
-                this.salary));
+    // display information 
+    @Override
+    public void displayInfo() {
+        System.out.println(this.toString()); // use this output
     }
 
     @Override
