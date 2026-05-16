@@ -15,8 +15,14 @@ public class PaymentService implements Searchable {
     public Payment processPayment(Membership membership, float discount, PaymentMethod paymentMethod, double payAmount ){
         Payment payment = new Payment(membership,discount,paymentMethod, payAmount );
         System.out.printf("Payment processed:%s\n",payment.getPaymentID());
-        paymentList.add(payment);
-        return payment;
+        if (payment.getPaymentStatus().equals(Payment.PAID)) {
+            payment.getMembership().setStatus(MemberStatus.ACTIVE);
+            paymentList.add(payment);
+            return payment;
+        }
+        else{
+            return null;
+        }
     }
     //search payment by id
     

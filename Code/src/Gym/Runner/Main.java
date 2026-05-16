@@ -7,9 +7,13 @@ package Gym.Runner;
 // import Gym.Enum.PaymentMethod;
 // import Gym.Model.Member;
 
+import java.util.ArrayList;
+
 // import Gym.Service.PaymentService;
 
 import java.util.Scanner;
+
+import Gym.Model.Admin;
 import Gym.Model.Member;
 import Gym.Enum.Gender;
 import Gym.Interface.Displayable;
@@ -24,7 +28,17 @@ public class Main {
                 // Staff vanda = new Staff(null, 0, null, null, null, 0.0);
                 // vanda.displayable();
 
-                new GymManagement().run();
+                // new GymManagement().run();
+                ArrayList<Displayable> displayLis  = new ArrayList<>();
+                Admin admin = new Admin(null, 22, null, null, 2000);
+                displayLis.add(admin);
+                Staff newStaff = new Staff("null", 19, Gender.FEMALE, "null", 1000.0);
+                displayLis.add(newStaff);
+                for( Displayable d : displayLis){
+                        d.displayInfo();
+                }
+      
+
                 
 
 

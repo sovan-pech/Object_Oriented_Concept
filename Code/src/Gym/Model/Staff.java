@@ -1,25 +1,25 @@
 package Gym.Model;
 
 import Gym.Enum.Gender;
+
+import java.time.LocalDate;
+
 import Gym.Base.Person;
 
 public class Staff extends Person  {
     private static int count = 0;
-    private String role;
+    private LocalDate hirDate;
     private Double salary;
 
     // constructor
-    public Staff(String name, int age, Gender gender, String phoneNumber, String role, Double salary) {
+    public Staff(String name, int age, Gender gender, String phoneNumber,Double salary) {
         super(name, age, gender, phoneNumber);
         super.ID = "ST" + (++count);
-        this.setRole(role);
         this.setSalary(salary);
+        this.hirDate=LocalDate.now();
     }
 
     // accessor
-    public String getRole() {
-        return this.role;
-    }
 
     public Double getSalary() {
         return this.salary;
@@ -29,13 +29,8 @@ public class Staff extends Person  {
         return ID;
     }
 
-    protected void setRole(String role) {
-        if (role == null || role.isBlank()) {
-            System.out.println("Role is null! set to Cashier as default");
-            this.role="Cashier";
-            return;
-        }
-        this.role = role;
+    public LocalDate getHirDate(){
+        return hirDate;
     }
 
     protected void setSalary(Double salary) {
@@ -52,6 +47,7 @@ public class Staff extends Person  {
     public void setGender(Gender gender) {
         super.setGender(gender);
     }
+
 
 
     // display information 
@@ -71,7 +67,6 @@ public class Staff extends Person  {
                 Age             : %d
                 Gender          : %s
                 Phone Number    : %s
-                Role            : %s
                 Salary          : $%.2f
                 ----------------------------------
                 """, this.ID,
@@ -79,7 +74,6 @@ public class Staff extends Person  {
                 super.getAge(),
                 super.getGender(),
                 super.getPhoneNumber(),
-                this.role,
                 this.salary);
     }
 }
