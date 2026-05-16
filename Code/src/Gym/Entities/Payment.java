@@ -14,8 +14,12 @@ public class Payment implements Displayable {
     private PaymentMethod method; // in what method ? KHQR ? credit card?
     private double finalAmount;
     private Membership membership;
-    public final String[] paymentStatus = {"PAID","UNPAID"};
-    private String status;
+
+    //for payment status
+    public static final String PAID = "PAID";
+    public static final String FAILED="FAILED";
+    private String paymentStatus;
+
 
     
 
@@ -31,17 +35,20 @@ public class Payment implements Displayable {
     }
 
     // accessor
-    // set amount
+    /**
+     * set amount base on the the plan if success change paymentStatus to PAID
+     * @param payAmount 
+     */
     public void setPayAmount(double payAmount) {
         if (payAmount == membership.getPlan().getPlanPrice()) {
             this.payAmount = payAmount; 
             // paid 
-            status=paymentStatus[0];
+            paymentStatus=PAID;
            
         } else {
             this.payAmount = 0;
             System.out.println("Invalid amount. Expected: $" + membership.getPlan().getPlanPrice());
-            status=paymentStatus[1];
+            paymentStatus=FAILED;
             
         }
     }
@@ -78,7 +85,7 @@ public class Payment implements Displayable {
     }
      
     public String getPaymentStatus(){
-        return status;
+        return paymentStatus;
     }
    
     //set method 

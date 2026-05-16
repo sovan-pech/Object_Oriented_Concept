@@ -71,11 +71,12 @@ public class Membership implements Displayable {
         Member ID       : %s
         Member Name     : %s
         Plan Name       : %s
+        Plan Price      : $%s
         Start Date      : %s
         End Date        : %s
         Status          : %s
         ----------------------------------
-        """, membershipId, this.member.getID(), this.member.getName(), plan.getName(), startDate, endDate, status);
+        """, membershipId, this.member.getID(), this.member.getName(), plan.getName(),plan.getPlanPrice(), startDate, endDate, status);
   }
 
 }
