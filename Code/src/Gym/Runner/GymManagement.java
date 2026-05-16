@@ -16,7 +16,7 @@ public class GymManagement {
     private PaymentService paymentService = new PaymentService();
 
     public GymManagement() {
-        Staff currenStaff = new Staff("Yuth", 19, Gender.MALE, "087654321", "Manager", 500.0);
+        Staff currenStaff = new Staff("Yuth", 19, Gender.MALE, "Manager", 500.0);
         System.out.println("Current staff       :" + currenStaff.getName());
        
     }
@@ -27,22 +27,20 @@ public class GymManagement {
         Member mina = new Member("Minalyn", Gender.FEMALE, 18, "098765434");
         Member sovan = new Member("Sovan", Gender.MALE, 20, "094321325");
        
-        Membership thonsaMembership = new Membership(thonsar, memberService.plans[0]);
-        Membership sovanMembership= new Membership(sovan, memberService.plans[2]);
-        Membership minaMembership  = new Membership(mina, memberService.plans[2]);
+        Membership thonsaMembership = new Membership(thonsar, memberService.getPlan()[0]);
+        Membership sovanMembership= new Membership(sovan, memberService.getPlan()[2]);
+        Membership minaMembership  = new Membership(mina, memberService.getPlan()[2]);
 
 
         // add to service
         memberService.addMembership(thonsaMembership);
         memberService.addMembership(sovanMembership);
         memberService.addMembership(minaMembership);
-        memberService.listAllMembership();
 
         // payment 
         paymentService.processPayment(thonsaMembership, 0, PaymentMethod.KHQR, 19.99);
         paymentService.processPayment(sovanMembership, 0, PaymentMethod.BYCASH, 59.99);
-        memberService.listAllMembership();
-        memberService.listAllMember();
+        memberService.listAll();
     }
     // public void run() {
     // int choice = -1;

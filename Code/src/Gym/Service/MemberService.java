@@ -3,6 +3,7 @@ package Gym.Service;
 import Gym.Entities.Membership;
 import Gym.Entities.MembershipPlan;
 import Gym.Enum.Gender;
+import Gym.Interface.Displayable;
 import Gym.Interface.Searchable;
 import Gym.Model.Member;
 
@@ -12,13 +13,14 @@ import java.util.Scanner;
 public class MemberService implements Searchable {
     ArrayList<Member> memberList = new ArrayList<>();
     ArrayList<Membership> membershipList = new ArrayList<>();
-    public MembershipPlan[] plans = {
+
+    private MembershipPlan[] plans = {
             new MembershipPlan("Basic", 19.99, 1),
             new MembershipPlan("Premium", 39.99, 3),
             new MembershipPlan("Annual", 59.99, 12)
     };
         /**
-         * add member and membership to the list 
+         * add member and membership to the list and add to display list 
          * @param membership
          * 
         */
@@ -68,6 +70,12 @@ public class MemberService implements Searchable {
     }
 
 
+
+    public MembershipPlan[] getPlan(){
+        return plans;
+    }
+
+
     /**
      *  Compare given ID with the ID of member in the memberlist 
      * @param id
@@ -82,7 +90,7 @@ public class MemberService implements Searchable {
             }
             return null;
     }
-   
+   @Override
     public Membership findByID(String id){
         System.out.printf("Find membership with ID %s .\n",id);
         for(Membership findMembership:membershipList){
@@ -92,31 +100,44 @@ public class MemberService implements Searchable {
         }
         return null;
     }
-    /**
-     * display all member 
-     */
-    public void listAllMember() {
-        if (memberList.isEmpty()) {
-            System.out.println("No members found.");
-            return;
-        }
-        System.out.println("====== ALL MEMBERS ======");
-        for (Member m : memberList)
-            System.out.println(m);
-    }
 
     /**
-     * display all membership
-    
+     *list all member and membership by storing data in array list of displayable 
     */
-    public void listAllMembership(){
-        if(membershipList.isEmpty()){
-            System.out.println("The array list is empty!");
-            return;
+    public void listAll() {
+        ArrayList<Displayable> displayAll= new ArrayList<>();
+        displayAll.addAll(memberList);
+        displayAll.addAll(membershipList);
+        for( Displayable d : displayAll){
+            d.displayInfo();
         }
-        System.out.println("\nAll Membership");
-        for(Membership memberships: membershipList){
-            System.out.println(memberships);
-        }
+
     }
+    // /**
+    //  * display all member 
+    //  */
+    // public void listAllMember() {
+    //     if (memberList.isEmpty()) {
+    //         System.out.println("No members found.");
+    //         return;
+    //     }
+    //     System.out.println("====== ALL MEMBERS ======");
+    //     for (Member m : memberList)
+    //         System.out.println(m);
+    // }
+
+    // /**
+    //  * display all membership
+    
+    // */
+    // public void listAllMembership(){
+    //     if(membershipList.isEmpty()){
+    //         System.out.println("The array list is empty!");
+    //         return;
+    //     }
+    //     System.out.println("\nAll Membership");
+    //     for(Membership memberships: membershipList){
+    //         System.out.println(memberships);
+    //     }
+    // }
 }

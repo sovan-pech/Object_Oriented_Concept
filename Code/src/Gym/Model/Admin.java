@@ -10,7 +10,7 @@ public class Admin extends Staff {
   }
 
   public void setSalary(double salary){
-    super.setSalary(getSalary());
+    super.setSalary(salary);
   }
 
   @Override
